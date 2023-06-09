@@ -1,0 +1,14 @@
+.MainPage {
+  padding: 24px;
+}
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  max-width: 400px;
+}
+
+.button {
+  margin-top: 50px;
+}

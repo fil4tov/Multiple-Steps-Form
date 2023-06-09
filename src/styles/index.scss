@@ -1,0 +1,32 @@
+@import "reset";
+@import "variables";
+@import "common";
+
+@font-face {
+  font-family: var(--font-family);
+  font-style:  normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../../src/assets/fonts/SB Sans Interface.woff2') format("woff2")
+}
+
+body {
+  background-color: var(--body-bg-color);
+  color: var(--color-primary);
+  padding: var(--space-6);
+  max-width: 900px;
+  min-width: 320px;
+  margin: 0 auto;
+  font-family: 'SB Sans Interface', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: content-box;
+}
+
+.app {
+  min-height: 700px;
+  margin: 0 auto;
+  background-color: var(--form-bg-color);
+  border-radius: var(--border-m);
+  overflow: hidden;
+}

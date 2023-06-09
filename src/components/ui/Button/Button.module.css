@@ -1,0 +1,56 @@
+.Button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  cursor: pointer;
+  padding: 12px 16px;
+  border-radius: 4px;
+  border: 2px solid transparent;
+  outline: none;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  transition: opacity .2s, background-color .2s;
+}
+
+.Button:disabled {
+  opacity: .5;
+}
+
+.Button:disabled:hover {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+.filled {
+  background-color: #5558FA;
+  color: #fff;
+}
+
+.filled:hover {
+  opacity: .9;
+}
+
+.filled:active {
+  opacity: 1.1;
+}
+
+.outlined {
+  border: 2px solid #5558FA;
+  background-color: transparent;
+  color: #5558FA;
+}
+
+.outlined:hover {
+  background-color: rgba(85, 88, 250, 0.09);
+}
+
+.outlined:active {
+  background-color: rgba(85, 88, 250, 0.03);
+}
+
+.clear {
+  background-color: transparent;
+}

@@ -1,0 +1,45 @@
+:root {
+  --font-family: 'SB Sans Interface';
+  --body-bg-color: #F4F4F5;
+  --form-bg-color: #FFF;
+
+  // Colors
+  --grey-100: #EBEBEB;
+  --grey-200: #D6D6D6;
+  --grey-300: #CCC;
+  --grey-500: #A6A6A6;
+  --grey-700: #858585;
+  --grey-800: #666;
+  --grey-900: #333;
+  --blue-light: #D5E4F7;
+  --blue-dark: #212830;
+  --blue-accent: #5558FA;
+
+  // App colors
+  --color-primary: var(--grey-900);
+  --color-secondary: var(--grey-700);
+  --color-accent: var(--blue-accent);
+
+  // Transitions
+  --transition-time: .2s;
+  --transition-opacity: opacity var(--transition-time);
+  --transition-bgc: background-color var(--transition-time);
+
+  // Hover
+  --hover-opacity: .8;
+
+  // Spaces
+  --space-unit: 4px;
+  --space-1: calc(1 * var(--space-unit)); // 4
+  --space-2: calc(2 * var(--space-unit)); // 8
+  --space-3: calc(3 * var(--space-unit)); // 12
+  --space-4: calc(4 * var(--space-unit)); // 16
+  --space-5: calc(5 * var(--space-unit)); // 20
+  --space-6: calc(6 * var(--space-unit)); // 24
+
+  // Borders
+  --border-s: 4px;
+  --border-m: 12px;
+  --border-l: 24px;
+  --border-circle: 50%;
+}

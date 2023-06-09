@@ -1,0 +1,8 @@
+.tipRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+.counter {
+  margin-left: auto;
+}
