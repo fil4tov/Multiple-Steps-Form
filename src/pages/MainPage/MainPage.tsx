@@ -1,12 +1,20 @@
 import { type FC, useEffect } from 'react'
-import { type MainPageValues } from './types'
 import { useForm } from 'react-hook-form'
-import { UserInfo } from '../../components/UserInfo/UserInfo'
-import { Button, TextField } from '../../components/ui'
-import { useAppSelector, useFormStep, usePhoneMask } from '../../utils/hooks'
-import { Tips } from '../../utils/consts'
-import { setIsDone, setValues } from './MainPageSlice'
-import { getMainPageState } from '../../store/selectors'
+import { UserInfo } from 'components/UserInfo/UserInfo'
+import {
+  Button,
+  FormControl,
+  FormError,
+  FormLabel,
+  Input
+} from 'components/ui'
+import { useAppSelector, useFormStep, usePhoneMask } from 'utils/hooks'
+import { getMainPageState } from 'store/selectors'
+import { Tips } from 'utils/consts'
+
+import { type MainPageValues } from './types'
+import { setIsDone, setValues } from './slice'
+
 import styles from './MainPage.module.css'
 
 export const MainPage: FC = () => {
@@ -43,34 +51,38 @@ export const MainPage: FC = () => {
       <UserInfo/>
 
       <form onSubmit={handleSubmit(onSubmit)} className={styles.contacts}>
-        <TextField
-          {...register('phone', {
-            required: Tips.REQUIRED,
-            validate: {
-              phone: value => value.replace(/\D/g, '').length >= 11 || Tips.PHONE
-            },
-            onChange
-          })}
-          tip={errors?.phone?.message}
-          onKeyDown={onKeyDown}
-          label="Номер телефона"
-          type="tel"
-          placeholder="+7 (999) 999-99-99"
-        />
+        <FormControl isRequired>
+          <FormLabel text='Номер телефона'/>
+          <Input
+            {...register('phone', {
+              required: Tips.REQUIRED,
+              validate: {
+                phone: value => value.replace(/\D/g, '').length >= 11 || Tips.PHONE
+              },
+              onChange
+            })}
+            onKeyDown={onKeyDown}
+            type="tel"
+            placeholder="+7 (999) 999-99-99"
+          />
+           <FormError text={errors.phone?.message}/>
+        </FormControl>
 
-        <TextField
-          {...register('email', {
-            required: Tips.REQUIRED,
-            pattern: {
-              value: /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/,
-              message: Tips.EMAIL
-            }
-          })}
-          tip={errors?.email?.message}
-          label="Email"
-          type="email"
-          placeholder="example@mail.com"
-        />
+        <FormControl isRequired>
+          <FormLabel text='Email'/>
+          <Input
+            {...register('email', {
+              required: Tips.REQUIRED,
+              pattern: {
+                value: /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/,
+                message: Tips.EMAIL
+              }
+            })}
+            type="email"
+            placeholder="example@mail.com"
+          />
+          <FormError text={errors.email?.message}/>
+        </FormControl>
 
         <Button
           type="submit"

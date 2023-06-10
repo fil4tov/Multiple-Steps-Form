@@ -1,10 +1,5 @@
 import { type ReactNode } from 'react'
-
-type Justify = 'left' | 'right' | 'center'
-
-export interface ModalContextState {
-  onClose: () => void
-}
+import { type Justify } from '../types'
 
 export interface ModalProps {
   children: ReactNode

@@ -1,7 +1,7 @@
 import { type FC } from 'react'
-import { classNames, getNameAbbreviation } from '../../utils/helpers/'
+import { classNames, getNameAbbreviation } from 'utils/helpers'
 import { UserLink } from '../UserLink/UserLink'
-import { userName, userLinks } from '../../utils/consts'
+import { userName, userLinks } from 'utils/consts'
 import styles from './UserInfo.module.scss'
 
 interface UserInfoProps {

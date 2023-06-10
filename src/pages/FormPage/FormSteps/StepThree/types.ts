@@ -1,4 +1,4 @@
-import { type FormStepState } from '../../../../utils/types'
+import { type FormStepState } from 'pages/FormPage/FormSteps/types'
 
 export interface StepThreeValues {
   about: string

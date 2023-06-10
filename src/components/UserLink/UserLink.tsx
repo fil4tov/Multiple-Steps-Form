@@ -1,6 +1,6 @@
 import { type FC } from 'react'
-import { classNames } from '../../utils/helpers'
-import styles from './UserLink.module.css'
+import { classNames } from 'utils/helpers'
+import styles from 'components/UserLink/UserLink.module.scss'
 import folder from '../../assets/icons/folder.svg'
 
 interface UserLinkProps {

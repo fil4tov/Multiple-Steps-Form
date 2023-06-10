@@ -14,16 +14,23 @@
   --blue-light: #D5E4F7;
   --blue-dark: #212830;
   --blue-accent: #5558FA;
+  --red-light: #e53e3e;
 
   // App colors
   --color-primary: var(--grey-900);
   --color-secondary: var(--grey-700);
   --color-accent: var(--blue-accent);
+  --color-error: var(--red-light);
+
+  // Inputs
+  --input-border-color: var(--grey-200);
+  --input-bg-color: #fff;
 
   // Transitions
   --transition-time: .2s;
   --transition-opacity: opacity var(--transition-time);
   --transition-bgc: background-color var(--transition-time);
+  --transition-box-shadow: box-shadow var(--transition-time);
 
   // Hover
   --hover-opacity: .8;

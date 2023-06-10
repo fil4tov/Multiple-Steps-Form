@@ -1,7 +1,8 @@
 import { Fragment } from 'react'
 import { type FC } from 'react'
-import { classNames } from '../../../utils/helpers'
+import { classNames } from 'utils/helpers'
 import styles from './ProgressBar.module.css'
+import { Box } from 'components/ui/Box/Box'
 
 interface ProgressBarProps {
   className?: string
@@ -11,7 +12,11 @@ interface ProgressBarProps {
 
 export const ProgressBar: FC<ProgressBarProps> = ({ className, totalSteps, currentStep }) => {
   return (
-    <div className={classNames([styles.ProgressBar, className])}>
+    <Box
+      align='center'
+      justify='between'
+      className={classNames([styles.ProgressBar, className])}
+    >
       {[...new Array(totalSteps)].map((_, i) => (
         <Fragment key={i}>
 
@@ -32,6 +37,6 @@ export const ProgressBar: FC<ProgressBarProps> = ({ className, totalSteps, curre
 
         </Fragment>
       ))}
-    </div>
+    </Box>
   )
 }

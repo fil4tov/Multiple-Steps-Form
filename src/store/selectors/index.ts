@@ -8,4 +8,4 @@ export const getStepThreeState = (state: RootState) => state.stepThree
 
 export const getMainPageState = (state: RootState) => state.mainPage
 
-export const getStateState = (state: RootState) => state
+export const getAllState = (state: RootState) => state

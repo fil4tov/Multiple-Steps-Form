@@ -28,6 +28,7 @@ module.exports = {
       code: 100,
       ignoreComments: true
     }],
+    'spaced-comment': 'off',
 
     '@typescript-eslint/no-unused-vars': 'warn'
   }

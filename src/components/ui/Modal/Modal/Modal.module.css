@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: center;
   opacity: 0;
-  transition: opacity .2s;
+  transition: var(--transition-opacity);
 }
 
 .opened {

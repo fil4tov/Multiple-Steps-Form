@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
-import { FormPage } from '../pages/FormPage/FormPage'
-import { MainPage } from '../pages/MainPage/MainPage'
+import { FormPage } from 'pages/FormPage/FormPage'
+import { MainPage } from 'pages/MainPage/MainPage'
 
 const App = () => {
   return (

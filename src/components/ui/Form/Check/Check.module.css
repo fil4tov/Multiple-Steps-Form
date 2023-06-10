@@ -3,7 +3,7 @@
 }
 
 .Check:checked + .customCheck {
-  background-image: url('../../../assets/icons/check.svg');
+  background-image: url('../../../../assets/icons/check.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 12px;

@@ -1,12 +1,12 @@
 import React, { type InputHTMLAttributes } from 'react'
-import { classNames } from '../../../utils/helpers'
-import styles from './Check.module.css'
+import { classNames } from 'utils/helpers'
+import styles from 'components/ui/Form/Check/Check.module.css'
 
 type Type = 'checkbox' | 'radio'
 
 interface CheckProps extends InputHTMLAttributes<HTMLInputElement> {
   className?: string
-  label: string | number
+  label: string
   type: Type
 }
 

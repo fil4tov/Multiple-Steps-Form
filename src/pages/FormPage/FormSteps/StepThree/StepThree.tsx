@@ -1,20 +1,29 @@
 import { type FC, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 
+import {
+  Box,
+  Button,
+  FormControl,
+  FormError,
+  FormLabel,
+  FormTip,
+  TextArea
+} from 'components/ui'
+import { useAppSelector, useFormStep } from 'utils/hooks'
+import { classNames } from 'utils/helpers'
+import { Tips } from 'utils/consts'
+import { getAllState, getStepThreeState } from 'store/selectors'
+
 import { type StepThreeValues } from './types'
 import { type FormStepProps } from '../types'
-import { classNames } from '../../../../utils/helpers'
-import { Button, TextArea } from '../../../../components/ui'
-import { useAppSelector, useFormStep } from '../../../../utils/hooks'
-import { setIsDone, setValues } from './StepThreeSlice'
-import { getStateState, getStepThreeState } from '../../../../store/selectors'
-import { Tips } from '../../../../utils/consts'
+import { setIsDone, setValues } from './slice'
 
 import styles from '../Steps.module.css'
 
 export const StepThree: FC<FormStepProps> = ({ className, currentStep, totalSteps }) => {
   const { values, isDone } = useAppSelector(getStepThreeState)
-  const state = useAppSelector(getStateState)
+  const state = useAppSelector(getAllState)
 
   const {
     register,
@@ -44,9 +53,9 @@ export const StepThree: FC<FormStepProps> = ({ className, currentStep, totalStep
 
   const onSubmit = async (data: StepThreeValues) => {
     const allData = {
+      ...state.mainPage.values,
       ...state.stepOne.values,
       ...state.stepTwo.values,
-      ...state.mainPage.values,
       ...data
     }
     console.log(allData)
@@ -57,23 +66,27 @@ export const StepThree: FC<FormStepProps> = ({ className, currentStep, totalStep
       onSubmit={handleSubmit(onSubmit)}
       className={classNames([styles.form, className])}
     >
-      <TextArea
-        {...register('about', {
-          required: Tips.REQUIRED,
-          validate: {
-            length: value => value.replace(/\s+/g, '').length <= 200 || `${Tips.MAX_LENGTH} 200`
-          }
-        })}
-        tip={errors?.about?.message}
-        counter={String(aboutValueLength)}
-        label='About'
-        placeholder='Placeholder...'
-      />
+      <FormControl isRequired>
+        <FormLabel text="About"/>
+        <TextArea
+          {...register('about', {
+            required: Tips.REQUIRED,
+            validate: {
+              length: value => value.replace(/\s+/g, '').length <= 200 || `${Tips.MAX_LENGTH} 200`
+            }
+          })}
+          placeholder="Placeholder..."
+        />
+        <Box>
+          <FormError text={errors?.about?.message}/>
+          <FormTip stick='right' tip={String(aboutValueLength)}/>
+        </Box>
+      </FormControl>
 
-      <div className={styles.buttons}>
-        <Button onClick={goBack} variant='outlined'>Назад</Button>
-        <Button type='submit' disabled={!isValid}>Отправить</Button>
-      </div>
+      <Box justify="between" className={styles.buttons}>
+        <Button onClick={goBack} variant="outlined">Назад</Button>
+        <Button type="submit" disabled={!isValid}>Отправить</Button>
+      </Box>
     </form>
   )
 }

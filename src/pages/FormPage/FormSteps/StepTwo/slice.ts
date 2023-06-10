@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { type StepTwoState, type StepTwoValues } from './types'
-import { getFormReducers } from '../../../../utils/helpers'
+import { getFormReducers } from 'utils/helpers'
 
 const initialState: StepTwoState = {
   values: {
@@ -13,11 +13,11 @@ const initialState: StepTwoState = {
   isDone: false
 }
 
-const stepTwoSlice = createSlice({
+const slice = createSlice({
   name: 'stepTwo',
   initialState,
   reducers: getFormReducers<StepTwoState, StepTwoValues>()
 })
 
-export const { setValues, setIsDone } = stepTwoSlice.actions
-export const stepTwo = stepTwoSlice.reducer
+export const { setValues, setIsDone } = slice.actions
+export const stepTwo = slice.reducer

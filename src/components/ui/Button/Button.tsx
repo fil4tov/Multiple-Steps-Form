@@ -1,5 +1,5 @@
 import { type ButtonHTMLAttributes, type FC } from 'react'
-import { classNames } from '../../../utils/helpers'
+import { classNames } from 'utils/helpers'
 import styles from './Button.module.css'
 
 export type Variant = 'filled' | 'outlined' | 'clear'

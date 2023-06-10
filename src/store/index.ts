@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { stepOne } from '../pages/FormPage/FormSteps/StepOne/stepOneSlice'
-import { stepTwo } from '../pages/FormPage/FormSteps/StepTwo/StepTwoSlice'
-import { stepThree } from '../pages/FormPage/FormSteps/StepThree/StepThreeSlice'
-import { mainPage } from '../pages/MainPage/MainPageSlice'
+import { stepOne } from 'pages/FormPage/FormSteps/StepOne/slice'
+import { stepTwo } from 'pages/FormPage/FormSteps/StepTwo/slice'
+import { stepThree } from 'pages/FormPage/FormSteps/StepThree/slice'
+import { mainPage } from 'pages/MainPage/slice'
 export const store = configureStore({
   reducer: { stepOne, stepTwo, stepThree, mainPage }
 })

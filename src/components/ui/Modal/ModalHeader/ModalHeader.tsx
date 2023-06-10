@@ -1,5 +1,5 @@
 import React, { type FC } from 'react'
-import { classNames } from '../../../../utils/helpers'
+import { classNames } from 'utils/helpers'
 import { type ModalHeaderProps } from '../types'
 import styles from './ModalHeader.module.css'
 

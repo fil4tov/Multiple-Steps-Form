@@ -1,5 +1,5 @@
 import { type FC, type MouseEvent, useEffect, useMemo } from 'react'
-import { classNames } from '../../../../utils/helpers'
+import { classNames } from 'utils/helpers'
 import { type ModalProps } from '../types'
 import { ModalContext } from '../context'
 import styles from './Modal.module.css'

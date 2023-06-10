@@ -1,0 +1,24 @@
+@import "styles/mixins";
+
+.UserLink {
+  @include align-center;
+  gap: var(--space-1);
+}
+
+.icon {
+  width: 13px;
+  height: 11px;
+  display: block;
+}
+
+.link {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--color-accent);
+  transition: var(--transition-opacity);
+}
+
+.link:hover {
+  opacity: var(--hover-opacity);
+}

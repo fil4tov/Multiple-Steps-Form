@@ -1,16 +1,7 @@
 export const userLinks = [
-  {
-    social: 'Telegram',
-    link: '/'
-  },
-  {
-    social: 'GitHub',
-    link: '/'
-  },
-  {
-    social: 'Resume',
-    link: '/'
-  }
+  { social: 'Telegram', link: '/' },
+  { social: 'GitHub', link: '/' },
+  { social: 'Resume', link: '/' }
 ]
 
 export const userName = 'Данил Непомнящий'
@@ -18,6 +9,17 @@ export const userName = 'Данил Непомнящий'
 export enum Sex {
   'MALE' = 'male',
   'FEMALE' = 'female'
+}
+
+export const sexOptions: Record<Sex, string> = {
+  [Sex.MALE]: 'Male',
+  [Sex.FEMALE]: 'Female'
+}
+
+export enum Status {
+  LOADING = 'loading',
+  SUCCESS = 'success',
+  ERROR = 'error'
 }
 
 export enum Tips {

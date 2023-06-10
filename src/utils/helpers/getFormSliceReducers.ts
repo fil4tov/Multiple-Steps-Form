@@ -1,5 +1,5 @@
 import { type PayloadAction } from '@reduxjs/toolkit'
-import { type FormStepState, type FormStepValues } from '../types'
+import { type FormStepState, type FormStepValues } from 'pages/FormPage/FormSteps/types'
 
 export const getFormReducers = <
   State extends FormStepState,

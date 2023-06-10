@@ -1,4 +1,4 @@
-import { type FormStepState } from '../../utils/types'
+import { type FormStepState } from '../FormPage/FormSteps/types'
 
 export interface MainPageValues {
   phone: string

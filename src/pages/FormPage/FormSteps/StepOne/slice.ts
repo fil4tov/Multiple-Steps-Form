@@ -1,23 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { type StepOneState, type StepOneValues } from './types'
-import { Sex } from '../../../../utils/consts'
-import { getFormReducers } from '../../../../utils/helpers'
+import { getFormReducers } from 'utils/helpers'
 
 const initialState: StepOneState = {
   values: {
     nickname: '',
     name: '',
     surname: '',
-    sex: Sex.MALE
+    sex: ''
   },
   isDone: false
 }
 
-const stepOneSlice = createSlice({
+const slice = createSlice({
   name: 'stepOne',
   initialState,
   reducers: getFormReducers<StepOneState, StepOneValues>()
 })
 
-export const { setValues, setIsDone } = stepOneSlice.actions
-export const stepOne = stepOneSlice.reducer
+export const { setValues, setIsDone } = slice.actions
+export const stepOne = slice.reducer

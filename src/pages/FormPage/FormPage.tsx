@@ -1,8 +1,8 @@
 import { type FC, useEffect, useMemo, useState } from 'react'
-import { ProgressBar } from '../../components/ui'
+import { ProgressBar } from 'components/ui'
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import { StepOne, StepTwo, StepThree } from './FormSteps'
-import { getCurrentStep } from '../../utils/helpers'
+import { getCurrentStep } from 'utils/helpers'
 import styles from './FormPage.module.css'
 
 export const FormPage: FC = () => {

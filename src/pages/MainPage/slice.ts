@@ -1,6 +1,6 @@
 import { type MainPageState, type MainPageValues } from './types'
 import { createSlice } from '@reduxjs/toolkit'
-import { getFormReducers } from '../../utils/helpers/'
+import { getFormReducers } from 'utils/helpers'
 
 const initialState: MainPageState = {
   values: {
@@ -10,11 +10,11 @@ const initialState: MainPageState = {
   isDone: false
 }
 
-const mainPageSlice = createSlice({
+const slice = createSlice({
   name: 'mainPage',
   initialState,
   reducers: getFormReducers<MainPageState, MainPageValues>()
 })
 
-export const { setValues, setIsDone } = mainPageSlice.actions
-export const mainPage = mainPageSlice.reducer
+export const { setValues, setIsDone } = slice.actions
+export const mainPage = slice.reducer

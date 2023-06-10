@@ -1,25 +1,19 @@
+@import "mixins";
+
 .inputBase {
+  @include justify-align-center;
   width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-start;
   padding: 12px;
-  background: #fff;
-  border: 1px solid rgb(0 0 0 / 16%);
+  background: var(--input-bg-color);
+  border: 1px solid var(--input-border-color);
   border-radius: var(--border-s);
-  color: rgb(0 0 0 / 68%);
-  transition: box-shadow .2s;
+  color: var(--color-primary);
+  transition: var(--transition-box-shadow);
   font-family: inherit;
 }
 
 .inputBase::placeholder {
-  color: rgb(0 0 0 / 48%);
-}
-
-.inputBase:disabled {
-  color: rgb(0 0 0 / 48%);
-  background: rgb(0 0 0 / 4%);
+  color: var(--color-secondary);
 }
 
 .inputBase:focus {
@@ -27,21 +21,28 @@
   box-shadow: 0 0 5px 0 rgb(85 88 250 / 40%);
 }
 
-.label {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  gap: 8px;
-}
+.justify-start {justify-content: start;}
+.justify-end {justify-content: end;}
+.justify-center {justify-content: center;}
+.justify-around {justify-content: space-around;}
+.justify-between {justify-content: space-between;}
+.justify-evenly {justify-content: space-evenly;}
 
-.justify-left {
-  justify-content: left;
-}
+.align-start {align-items: flex-start;}
+.align-end {align-items: flex-end;}
+.align-center {align-items: center;}
 
-.justify-right {
-  justify-content: right;
-}
+.margin-left {margin-right: auto;}
+.margin-right {margin-left: auto;}
 
-.justify-center {
-  justify-content: center;
-}
+.direction-row {flex-direction: row;}
+.direction-row-reverse {flex-direction: row-reverse;}
+.direction-column {flex-direction: column;}
+.direction-column-reverse {flex-direction: column-reverse;}
+
+.gap-1 {gap: var(--space-1)}
+.gap-2 {gap: var(--space-2)}
+.gap-3 {gap: var(--space-3)}
+.gap-4 {gap: var(--space-4)}
+.gap-5 {gap: var(--space-5)}
+.gap-6 {gap: var(--space-6)}

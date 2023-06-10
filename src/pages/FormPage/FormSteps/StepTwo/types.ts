@@ -1,8 +1,7 @@
-import { type FormStepState } from '../../../../utils/types'
+import { type FormStepState } from 'pages/FormPage/FormSteps/types'
 
 interface Advantage {
   value: string
-  id?: string
 }
 
 export interface StepTwoValues {
