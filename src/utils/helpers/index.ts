@@ -1,4 +1,3 @@
-export { classNames } from './classNames'
+export { cls } from 'utils/helpers/cls'
 export { getNameAbbreviation } from './getNameAbbreviation'
-export { getCurrentStep, getPreviousStep } from './pathHelpers'
 export { getFormReducers } from './getFormSliceReducers'

@@ -5,9 +5,6 @@
   bottom: 0;
   right: 0;
   pointer-events: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   opacity: 0;
   transition: var(--transition-opacity);
 }
@@ -20,9 +17,9 @@
 .content {
   position: relative;
   background-color: #fff;
-  padding: 32px;
-  border-radius: 12px;
+  padding: calc(var(--space-unit) * 8);
+  border-radius: var(--border-m);
   box-sizing: content-box;
   min-width: 400px;
-  max-width: 60%;
+  max-width: 50%;
 }

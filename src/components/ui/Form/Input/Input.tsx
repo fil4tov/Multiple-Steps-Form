@@ -1,5 +1,5 @@
 import React, { type InputHTMLAttributes } from 'react'
-import { classNames } from 'utils/helpers'
+import { cls } from 'utils/helpers'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   className?: string
@@ -10,7 +10,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref)
   return (
     <input
       ref={ref}
-      className={classNames(['inputBase', className])}
+      className={cls(['inputBase', className])}
       {...rest}
     />
   )

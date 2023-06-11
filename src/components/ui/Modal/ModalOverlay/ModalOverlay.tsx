@@ -1,11 +1,11 @@
 import { type FC } from 'react'
 
-import styles from './ModalOverlay.module.css'
-import { classNames } from 'utils/helpers'
+import { cls } from 'utils/helpers'
 import { type ModalOverlayProps } from '../types'
+import styles from './ModalOverlay.module.scss'
 
 export const ModalOverlay: FC<ModalOverlayProps> = ({ className }) => {
   return (
-    <div className={classNames([styles.ModalOverlay, className])}/>
+    <div className={cls([styles.ModalOverlay, className])}/>
   )
 }

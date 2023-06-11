@@ -1,7 +1,7 @@
 import { type FC } from 'react'
-import { classNames } from 'utils/helpers'
-import styles from 'components/UserLink/UserLink.module.scss'
-import folder from '../../assets/icons/folder.svg'
+import { cls } from 'utils/helpers'
+import { ReactComponent as Folder } from 'assets/icons/folder.svg'
+import styles from './UserLink.module.scss'
 
 interface UserLinkProps {
   className?: string
@@ -11,12 +11,8 @@ interface UserLinkProps {
 
 export const UserLink: FC<UserLinkProps> = ({ className, text, link }) => {
   return (
-    <li className={classNames([styles.UserLink, className])}>
-      <img
-        className={styles.icon}
-        src={folder}
-        alt="Иконка папки"
-      />
+    <li className={cls([styles.UserLink, className])}>
+      <Folder className={styles.icon}/>
       <a href={link} className={styles.link}>{text}</a>
     </li>
   )

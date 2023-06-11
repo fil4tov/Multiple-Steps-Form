@@ -1,6 +1,6 @@
 import { type ButtonHTMLAttributes, type FC } from 'react'
-import { classNames } from 'utils/helpers'
-import styles from './Button.module.css'
+import { cls } from 'utils/helpers'
+import styles from './Button.module.scss'
 
 export type Variant = 'filled' | 'outlined' | 'clear'
 
@@ -22,7 +22,7 @@ export const Button: FC<ButtonProps> = (props) => {
     <button
       {...otherProps}
       type={type}
-      className={classNames([styles.Button, styles[variant], className])}
+      className={cls([styles.Button, styles[variant], className])}
     >
       {children}
     </button>

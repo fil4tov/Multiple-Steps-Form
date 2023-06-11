@@ -20,10 +20,7 @@ export const FormControl: FC<FormControlProps> = ({ className, children, isRequi
 
   return (
     <FormControlContext.Provider value={store}>
-      <Box
-        direction='column'
-        gap={2}
-        className={className}>
+      <Box gap={2} className={className}>
         {children}
       </Box>
     </FormControlContext.Provider>

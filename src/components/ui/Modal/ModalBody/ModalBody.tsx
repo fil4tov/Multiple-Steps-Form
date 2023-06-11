@@ -1,16 +1,22 @@
 import { type FC } from 'react'
-import { classNames } from 'utils/helpers'
+import { Box } from '../../'
 import { type ModalBodyProps } from '../types'
-import styles from './ModalBody.module.css'
 
-export const ModalBody: FC<ModalBodyProps> = ({ className, children, justify = 'left' }) => {
-  const justifyClass = `justify-${justify}`
+export const ModalBody: FC<ModalBodyProps> = (props) => {
+  const {
+    className,
+    children,
+    justify = 'center',
+    align = 'center'
+  } = props
 
   return (
-    <div className={classNames([styles.ModalBody, className], {
-      [justifyClass]: Boolean(justify)
-    })}>
+    <Box
+      className={className}
+      align={align}
+      justify={justify}
+    >
       {children}
-    </div>
+    </Box>
   )
 }

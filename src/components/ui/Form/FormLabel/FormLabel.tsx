@@ -1,8 +1,8 @@
 import { type FC } from 'react'
-import { classNames } from 'utils/helpers'
+import { cls } from 'utils/helpers'
 
-import styles from 'components/ui/Form/FormLabel/FormLabel.module.scss'
-import { useFormControlContext } from 'components/ui/Form/FormControl/FormControl'
+import { useFormControlContext } from '../FormControl/FormControl'
+import styles from './FormLabel.module.scss'
 
 interface FormLabelProps {
   text: string
@@ -13,7 +13,7 @@ export const FormLabel: FC<FormLabelProps> = ({ className, text }) => {
   const { isRequired } = useFormControlContext()
 
   return (
-    <label className={classNames([styles.FormLabel, className])}>
+    <label className={cls([styles.FormLabel, className])}>
       {text}
       {isRequired ? <span className={styles.required}>*</span> : ''}
     </label>

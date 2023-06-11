@@ -9,3 +9,12 @@ export const getStepThreeState = (state: RootState) => state.stepThree
 export const getMainPageState = (state: RootState) => state.mainPage
 
 export const getAllState = (state: RootState) => state
+
+export const getCurrentStep = (state: RootState) => state.form.currentStep
+
+export const getAllValues = (state: RootState) => ({
+  ...state.mainPage.values,
+  ...state.stepOne.values,
+  ...state.stepTwo.values,
+  ...state.stepThree.values
+})

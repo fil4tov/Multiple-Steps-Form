@@ -1,7 +1,8 @@
 import { type FC } from 'react'
-import { classNames, getNameAbbreviation } from 'utils/helpers'
+import { cls, getNameAbbreviation } from 'utils/helpers'
 import { UserLink } from '../UserLink/UserLink'
 import { userName, userLinks } from 'utils/consts'
+import { Box } from 'components/ui'
 import styles from './UserInfo.module.scss'
 
 interface UserInfoProps {
@@ -10,19 +11,24 @@ interface UserInfoProps {
 
 export const UserInfo: FC<UserInfoProps> = ({ className }) => {
   return (
-    <div className={classNames([styles.UserInfo, className])}>
-      <div className={styles.avatar}>
+    <Box
+      direction='row'
+      gap={6}
+      wrap='wrap'
+      className={cls([styles.UserInfo, className])}
+    >
+      <Box justify='center' align='center' className={styles.avatar}>
         <span>{getNameAbbreviation(userName)}</span>
-      </div>
+      </Box>
 
-      <div className={styles.info}>
+      <Box justify='center' gap={2}>
         <p className={styles.name}>{userName}</p>
         <ul className={styles.links}>
           {userLinks.map(({ link, social }, i) => (
             <UserLink key={i} text={social} link={link} />
           ))}
         </ul>
-      </div>
-    </div>
+      </Box>
+    </Box>
   )
 }

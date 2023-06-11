@@ -1,6 +1,6 @@
 import React, { type SelectHTMLAttributes } from 'react'
-import { classNames } from 'utils/helpers'
-import styles from 'components/ui/Form/Select/Select.module.scss'
+import { cls } from 'utils/helpers'
+import styles from './Select.module.scss'
 
 interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   className?: string
@@ -12,7 +12,7 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>((props, r
   return (
     <select
       ref={ref}
-      className={classNames(['inputBase', styles.Select])}
+      className={cls(['inputBase', styles.Select])}
       {...rest}
     >
       <option value="" hidden>{placeholder}</option>

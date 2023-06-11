@@ -1,0 +1,40 @@
+@import "styles/mixins";
+
+.Check {
+  display: none;
+
+  &:checked + .customCheck {
+    background-image: url('../../../../assets/icons/check.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 12px;
+    background-color: var(--green-light);
+    border: 2px solid transparent;
+  }
+}
+
+.customCheck {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--input-border-color);
+  transition: var(--transition-bgc);
+}
+
+.text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.label {
+  @include align-center;
+  gap: var(--space-2);
+}
+
+.radio {
+  border-radius: var(--border-circle);
+}
+
+.checkbox {
+  border-radius: var(--border-s);
+}

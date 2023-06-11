@@ -1,9 +1,8 @@
 import { type FC, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 
+import { FormButtons } from 'components/FormButtons/FormButtons'
 import {
-  Box,
-  Button,
   FormControl,
   FormError,
   FormLabel,
@@ -11,7 +10,6 @@ import {
   Select
 } from 'components/ui'
 import { useAppSelector, useFormStep } from 'utils/hooks'
-import { classNames } from 'utils/helpers'
 import { sexOptions, Tips } from 'utils/consts'
 import { getStepOneState } from 'store/selectors'
 
@@ -19,9 +17,7 @@ import { type FormStepProps } from '../types'
 import { type StepOneValues } from './types'
 import { setValues, setIsDone } from './slice'
 
-import styles from '../Steps.module.css'
-
-export const StepOne: FC<FormStepProps> = ({ className, currentStep, totalSteps }) => {
+export const StepOne: FC<FormStepProps> = ({ currentStep, totalSteps }) => {
   const { values, isDone } = useAppSelector(getStepOneState)
 
   const {
@@ -31,11 +27,11 @@ export const StepOne: FC<FormStepProps> = ({ className, currentStep, totalSteps 
     getValues,
     trigger
   } = useForm<StepOneValues>({
-    mode: 'onBlur',
+    mode: 'onChange',
     defaultValues: values
   })
 
-  const { onSubmit, goBack } = useFormStep<StepOneValues>({
+  const { previousStep, nextStep } = useFormStep<StepOneValues>({
     totalSteps,
     currentStep,
     getValues,
@@ -48,10 +44,7 @@ export const StepOne: FC<FormStepProps> = ({ className, currentStep, totalSteps 
   }, [])
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className={classNames([styles.form, className])}
-    >
+    <form onSubmit={handleSubmit(nextStep)}>
       <FormControl isRequired>
         <FormLabel text="Nickname"/>
         <Input
@@ -117,17 +110,14 @@ export const StepOne: FC<FormStepProps> = ({ className, currentStep, totalSteps 
           })}
           placeholder="Не выбрано"
         >
-          {Object.values(sexOptions).map((value, i) => (
-            <option key={i} value={value}>{value}</option>
+          {Object.entries(sexOptions).map(([key, value]) => (
+            <option key={key} value={key}>{value}</option>
           ))}
         </Select>
         <FormError text={errors.sex?.message}/>
       </FormControl>
 
-      <Box justify="between" className={styles.buttons}>
-        <Button onClick={goBack} variant="outlined">Назад</Button>
-        <Button disabled={!isValid} type="submit">Далее</Button>
-      </Box>
+      <FormButtons submitDisabled={!isValid} previousStep={previousStep}/>
     </form>
   )
 }

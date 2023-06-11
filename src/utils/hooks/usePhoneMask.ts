@@ -34,7 +34,7 @@ export const usePhoneMask = () => {
           formattedValue = '+7' + ' '
           break
         case '8':
-          formattedValue = '8' + ' '
+          formattedValue = '+7' + ' '
           break
         case '9':
           formattedValue = '+7' + ' (' + value

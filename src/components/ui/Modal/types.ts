@@ -1,5 +1,5 @@
 import { type ReactNode } from 'react'
-import { type Justify } from '../types'
+import { type Align, type Justify } from '../types'
 
 export interface ModalProps {
   children: ReactNode
@@ -18,14 +18,15 @@ export interface ModalCloseButtonProps {
 
 export interface ModalHeaderProps {
   className?: string
-  children: string
-  justify?: Justify
+  title: string
+  justify?: Exclude<Justify, 'evenly' | 'between' | 'around'>
 }
 
 export interface ModalBodyProps {
   className?: string
   children: ReactNode
   justify?: Justify
+  align?: Align
 }
 
 export interface ModalFooterProps {

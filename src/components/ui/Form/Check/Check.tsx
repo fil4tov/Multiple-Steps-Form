@@ -1,6 +1,6 @@
 import React, { type InputHTMLAttributes } from 'react'
-import { classNames } from 'utils/helpers'
-import styles from 'components/ui/Form/Check/Check.module.css'
+import { cls } from 'utils/helpers'
+import styles from './Check.module.scss'
 
 type Type = 'checkbox' | 'radio'
 
@@ -13,14 +13,14 @@ interface CheckProps extends InputHTMLAttributes<HTMLInputElement> {
 export const Check = React.forwardRef<HTMLInputElement, CheckProps>((props, ref) => {
   const { className, label, type, ...otherProps } = props
   return (
-    <label className={classNames([styles.label, className])}>
+    <label className={cls([styles.label, className])}>
       <input
         ref={ref}
         className={styles.Check}
         type={type}
         {...otherProps}
       />
-      <span className={classNames(
+      <span className={cls(
         ['check', styles.customCheck, styles[type]]
       )}/>
       <span className={styles.text}>{label}</span>

@@ -1,0 +1,19 @@
+@import "styles/mixins";
+
+.FormPage {
+  padding: 60px 110px;
+  gap: calc(var(--space-unit) * 17);
+
+  form {
+    @include column;
+    gap: var(--space-6);
+  }
+
+  input {
+    max-width: 300px;
+  }
+
+  select {
+    max-width: 300px;
+  }
+}

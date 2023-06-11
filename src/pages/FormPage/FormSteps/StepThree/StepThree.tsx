@@ -1,9 +1,9 @@
 import { type FC, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 
+import { FormButtons } from 'components/FormButtons/FormButtons'
 import {
   Box,
-  Button,
   FormControl,
   FormError,
   FormLabel,
@@ -11,19 +11,16 @@ import {
   TextArea
 } from 'components/ui'
 import { useAppSelector, useFormStep } from 'utils/hooks'
-import { classNames } from 'utils/helpers'
 import { Tips } from 'utils/consts'
-import { getAllState, getStepThreeState } from 'store/selectors'
+import { getAllValues, getStepThreeState } from 'store/selectors'
 
 import { type StepThreeValues } from './types'
 import { type FormStepProps } from '../types'
 import { setIsDone, setValues } from './slice'
 
-import styles from '../Steps.module.css'
-
-export const StepThree: FC<FormStepProps> = ({ className, currentStep, totalSteps }) => {
+export const StepThree: FC<FormStepProps> = ({ currentStep, totalSteps }) => {
   const { values, isDone } = useAppSelector(getStepThreeState)
-  const state = useAppSelector(getAllState)
+  const state = useAppSelector(getAllValues)
 
   const {
     register,
@@ -33,13 +30,13 @@ export const StepThree: FC<FormStepProps> = ({ className, currentStep, totalStep
     trigger,
     watch
   } = useForm<StepThreeValues>({
-    mode: 'onBlur',
+    mode: 'onChange',
     defaultValues: values
   })
 
   const aboutValueLength = watch('about')?.replace(/\s+/g, '').length
 
-  const { goBack } = useFormStep<StepThreeValues>({
+  const { previousStep } = useFormStep<StepThreeValues>({
     totalSteps,
     currentStep,
     getValues,
@@ -53,19 +50,14 @@ export const StepThree: FC<FormStepProps> = ({ className, currentStep, totalStep
 
   const onSubmit = async (data: StepThreeValues) => {
     const allData = {
-      ...state.mainPage.values,
-      ...state.stepOne.values,
-      ...state.stepTwo.values,
+      ...state,
       ...data
     }
     console.log(allData)
   }
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className={classNames([styles.form, className])}
-    >
+    <form onSubmit={handleSubmit(onSubmit)}>
       <FormControl isRequired>
         <FormLabel text="About"/>
         <TextArea
@@ -83,10 +75,7 @@ export const StepThree: FC<FormStepProps> = ({ className, currentStep, totalStep
         </Box>
       </FormControl>
 
-      <Box justify="between" className={styles.buttons}>
-        <Button onClick={goBack} variant="outlined">Назад</Button>
-        <Button type="submit" disabled={!isValid}>Отправить</Button>
-      </Box>
+      <FormButtons submitDisabled={!isValid} previousStep={previousStep}/>
     </form>
   )
 }

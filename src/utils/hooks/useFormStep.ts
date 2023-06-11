@@ -1,8 +1,8 @@
-import { useNavigate } from 'react-router-dom'
 import { useAppDispatch } from './redux'
 import { type ActionCreatorWithPayload } from '@reduxjs/toolkit'
 import { type FieldValues, type UseFormGetValues } from 'react-hook-form'
-import { getPreviousStep } from '../helpers'
+import { setCurrentStep } from 'pages/FormPage/slice'
+import { useNavigate } from 'react-router-dom'
 
 interface UseSaveStepProps<T extends FieldValues> {
   getValues: UseFormGetValues<T>
@@ -15,29 +15,32 @@ interface UseSaveStepProps<T extends FieldValues> {
 export const useFormStep = <T extends FieldValues> (
   { setValues, getValues, setIsDone, currentStep, totalSteps }: UseSaveStepProps<T>
 ) => {
-  const navigate = useNavigate()
   const dispatch = useAppDispatch()
-  const prevStep = getPreviousStep(currentStep, totalSteps)
+  const navigate = useNavigate()
 
-  const onSubmit = (data: T) => {
+  const nextStep = (data: T) => {
+    if (currentStep === -1) {
+      navigate('/create')
+    }
     saveData(data)
-    navigate(`/create/${currentStep + 1}`)
+    dispatch(setCurrentStep(currentStep + 1))
   }
 
   const saveData = (data: T) => {
-    console.log(data)
     dispatch(setValues(data))
     dispatch(setIsDone(true))
   }
 
-  const goBack = () => {
+  const previousStep = () => {
+    if (currentStep === 0) {
+      navigate('/')
+    }
     saveData(getValues())
-    navigate(prevStep)
+    dispatch(setCurrentStep(currentStep - 1))
   }
 
   return {
-    onSubmit,
-    goBack,
-    navigate
+    nextStep,
+    previousStep
   }
 }

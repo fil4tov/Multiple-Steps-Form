@@ -1,8 +1,7 @@
-import { Fragment } from 'react'
-import { type FC } from 'react'
-import { classNames } from 'utils/helpers'
-import styles from './ProgressBar.module.css'
+import { Fragment, type FC } from 'react'
+import { cls } from 'utils/helpers'
 import { Box } from 'components/ui/Box/Box'
+import styles from './ProgressBar.module.scss'
 
 interface ProgressBarProps {
   className?: string
@@ -13,25 +12,25 @@ interface ProgressBarProps {
 export const ProgressBar: FC<ProgressBarProps> = ({ className, totalSteps, currentStep }) => {
   return (
     <Box
+      direction='row'
       align='center'
-      justify='between'
-      className={classNames([styles.ProgressBar, className])}
+      className={cls([styles.ProgressBar, className])}
     >
       {[...new Array(totalSteps)].map((_, i) => (
         <Fragment key={i}>
 
           {i === 0
             ? null
-            : <div className={classNames([styles.line], {
-              [styles.lineDone]: i <= currentStep - 1
+            : <div className={cls([styles.line], {
+              [styles.filled]: i <= currentStep
             })}/>}
 
-          <div className={classNames([styles.circle], {
-            [styles.circleCurrent]: i === currentStep - 1,
-            [styles.circleDone]: i < currentStep - 1
+          <div className={cls([styles.circle], {
+            [styles.current]: i === currentStep,
+            [styles.done]: i < currentStep
           })}>
-            <span className={classNames([styles.step], {
-              [styles.stepDone]: i <= currentStep - 1
+            <span className={cls([styles.step], {
+              [styles.done]: i <= currentStep
             })}>{i + 1}</span>
           </div>
 

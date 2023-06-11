@@ -1,0 +1,64 @@
+@import "styles/mixins";
+
+.Button {
+  @include justify-align-center;
+  width: max-content;
+  cursor: pointer;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--border-s);
+  border: 2px solid transparent;
+  outline: 0;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  transition: var(--transition-opacity), var(--transition-bgc);
+
+  &:focus {
+    outline: 3px solid var(--blue-medium);
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  &:disabled {
+    opacity: .5;
+
+    &:hover {
+      cursor: not-allowed;
+      opacity: .5;
+    }
+  }
+}
+
+.filled {
+  background-color: var(--color-accent);
+  color: #fff;
+
+  &:hover {
+    opacity: .9;
+  }
+
+  &:active {
+    opacity: 1;
+  }
+}
+
+.outlined {
+  border: 2px solid var(--color-accent);
+  background-color: transparent;
+  color: var(--color-accent);
+
+  &:hover {
+    background-color: rgba(0, 0 ,0, .05);
+  }
+
+  &:active {
+    background-color: transparent;
+  }
+}
+
+.clear {
+  background-color: transparent;
+}

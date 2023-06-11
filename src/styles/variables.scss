@@ -4,16 +4,20 @@
   --form-bg-color: #FFF;
 
   // Colors
+  --grey-50: #F5F5F5;
   --grey-100: #EBEBEB;
   --grey-200: #D6D6D6;
   --grey-300: #CCC;
+  --grey-400: #B3B3B3;
   --grey-500: #A6A6A6;
   --grey-700: #858585;
   --grey-800: #666;
   --grey-900: #333;
   --blue-light: #D5E4F7;
+  --blue-medium: #a6a6ff;
   --blue-dark: #212830;
   --blue-accent: #5558FA;
+  --green-light: #92e892;
   --red-light: #e53e3e;
 
   // App colors
@@ -31,9 +35,6 @@
   --transition-opacity: opacity var(--transition-time);
   --transition-bgc: background-color var(--transition-time);
   --transition-box-shadow: box-shadow var(--transition-time);
-
-  // Hover
-  --hover-opacity: .8;
 
   // Spaces
   --space-unit: 4px;

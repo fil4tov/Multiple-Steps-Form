@@ -1,8 +1,10 @@
 import { type FC, type MouseEvent, useEffect, useMemo } from 'react'
-import { classNames } from 'utils/helpers'
+import { cls } from 'utils/helpers'
+
+import { Box } from '../../'
 import { type ModalProps } from '../types'
 import { ModalContext } from '../context'
-import styles from './Modal.module.css'
+import styles from './Modal.module.scss'
 
 export const Modal: FC<ModalProps> = ({ children, className, isOpen, onClose }) => {
   const store = useMemo(() => ({ onClose }), [])
@@ -25,14 +27,18 @@ export const Modal: FC<ModalProps> = ({ children, className, isOpen, onClose }) 
   }, [isOpen])
 
   return (
-    <div onMouseDown={onClose} className={classNames([styles.Modal, className], {
-      [styles.opened]: isOpen
-    })}>
-      <div onMouseDown={handleClickContent} className={styles.content}>
+    <Box
+      justify='center'
+      align='center'
+      onMouseDown={onClose}
+      className={cls([styles.Modal, className], {
+        [styles.opened]: isOpen
+      })}>
+      <Box gap={6} onMouseDown={handleClickContent} className={styles.content}>
         <ModalContext.Provider value={store}>
           {children}
         </ModalContext.Provider>
-      </div>
-    </div>
+      </Box>
+    </Box>
   )
 }

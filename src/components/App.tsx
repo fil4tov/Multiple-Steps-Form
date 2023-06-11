@@ -7,7 +7,7 @@ const App = () => {
     <div className='app'>
       <Routes>
         <Route index element={<MainPage/>}/>
-        <Route path='/create/*' element={<FormPage/>}/>
+        <Route path='/create' element={<FormPage/>}/>
         <Route path='*' element={<Navigate to='/' replace />}/>
       </Routes>
     </div>
