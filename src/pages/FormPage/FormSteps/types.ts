@@ -1,6 +1,5 @@
 export interface FormStepProps {
   currentStep: number
-  totalSteps: number
 }
 
 export type FormStepValues = Record<string, any>

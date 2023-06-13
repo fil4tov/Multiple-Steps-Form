@@ -1,6 +1,4 @@
 import { type FC, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { useForm } from 'react-hook-form'
 import { UserInfo } from 'components/UserInfo/UserInfo'
 import {
   Box,
@@ -10,7 +8,7 @@ import {
   FormLabel,
   Input
 } from 'components/ui'
-import { useAppDispatch, useAppSelector, useFormStep, usePhoneMask } from 'utils/hooks'
+import { useAppSelector, useFormStep, usePhoneMask } from 'utils/hooks'
 import { getCurrentStep, getMainPageState } from 'store/selectors'
 import { Tips } from 'utils/consts'
 
@@ -18,40 +16,21 @@ import { type MainPageValues } from './types'
 import { setIsDone, setValues } from './slice'
 
 import styles from './MainPage.module.scss'
-import { setCurrentStep } from 'pages/FormPage/slice'
 
 export const MainPage: FC = () => {
   const { values, isDone } = useAppSelector(getMainPageState)
   const { onChange, onKeyDown } = usePhoneMask()
   const currentStep = useAppSelector(getCurrentStep)
-  const navigate = useNavigate()
 
-  const dispatch = useAppDispatch()
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isValid },
-    getValues,
-    trigger
-  } = useForm<MainPageValues>({
-    mode: 'onChange',
-    defaultValues: values
-  })
-
-  const { nextStep } = useFormStep<MainPageValues>({
-    totalSteps: 0,
+  const { form, nextStep } = useFormStep<MainPageValues>({
+    values,
     currentStep,
-    getValues,
     setIsDone,
-    setValues
+    setValues,
+    mode: 'onChange'
   })
 
-  // FOR DEV
-  const goToStep = (step: number) => () => {
-    dispatch(setCurrentStep(step))
-    navigate('/create')
-  }
+  const { register, handleSubmit, trigger, formState: { errors, isValid } } = form
 
   useEffect(() => {
     if (isDone) void trigger()
@@ -103,11 +82,6 @@ export const MainPage: FC = () => {
           Начать
         </Button>
       </form>
-
-      <Button onClick={goToStep(0)}>1</Button>
-      <Button onClick={goToStep(1)}>2</Button>
-      <Button onClick={goToStep(2)}>3</Button>
-
     </Box>
   )
 }

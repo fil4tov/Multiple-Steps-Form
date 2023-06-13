@@ -16,8 +16,8 @@ const initialState: StepTwoState = {
 const slice = createSlice({
   name: 'stepTwo',
   initialState,
-  reducers: getFormReducers<StepTwoState, StepTwoValues>()
+  reducers: getFormReducers<StepTwoState, StepTwoValues>(initialState)
 })
 
-export const { setValues, setIsDone } = slice.actions
+export const { setValues, setIsDone, reset } = slice.actions
 export const stepTwo = slice.reducer

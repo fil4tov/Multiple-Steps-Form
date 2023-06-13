@@ -4,13 +4,14 @@ import { type FormStepState, type FormStepValues } from 'pages/FormPage/FormStep
 export const getFormReducers = <
   State extends FormStepState,
   Payload extends FormStepValues
->() => {
+>(initialState: State) => {
   return {
     setValues: (state: State, action: PayloadAction<Payload>) => {
       state.values = action.payload
     },
     setIsDone: (state: State, action: PayloadAction<boolean>) => {
       state.isDone = action.payload
-    }
+    },
+    reset: () => initialState
   }
 }

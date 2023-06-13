@@ -9,7 +9,9 @@ interface ProgressBarProps {
   currentStep: number
 }
 
-export const ProgressBar: FC<ProgressBarProps> = ({ className, totalSteps, currentStep }) => {
+export const ProgressBar: FC<ProgressBarProps> = ({ className, totalSteps, currentStep: step }) => {
+  const currentStep = step - 1
+
   return (
     <Box
       direction='row'

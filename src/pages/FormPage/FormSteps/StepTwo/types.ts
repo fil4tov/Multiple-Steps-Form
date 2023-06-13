@@ -1,4 +1,4 @@
-import { type FormStepState } from 'pages/FormPage/FormSteps/types'
+import { type FormStepState } from '../types'
 
 interface Advantage {
   value: string

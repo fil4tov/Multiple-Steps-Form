@@ -1,6 +1,4 @@
 import { type FC, useEffect } from 'react'
-import { useForm } from 'react-hook-form'
-
 import { FormButtons } from 'components/FormButtons/FormButtons'
 import {
   FormControl,
@@ -17,27 +15,22 @@ import { type FormStepProps } from '../types'
 import { type StepOneValues } from './types'
 import { setValues, setIsDone } from './slice'
 
-export const StepOne: FC<FormStepProps> = ({ currentStep, totalSteps }) => {
+export const StepOne: FC<FormStepProps> = ({ currentStep }) => {
   const { values, isDone } = useAppSelector(getStepOneState)
 
   const {
-    register,
-    handleSubmit,
-    formState: { errors, isValid },
-    getValues,
-    trigger
-  } = useForm<StepOneValues>({
-    mode: 'onChange',
-    defaultValues: values
+    form,
+    previousStep,
+    nextStep
+  } = useFormStep<StepOneValues>({
+    values,
+    currentStep,
+    setIsDone,
+    setValues,
+    mode: 'onChange'
   })
 
-  const { previousStep, nextStep } = useFormStep<StepOneValues>({
-    totalSteps,
-    currentStep,
-    getValues,
-    setIsDone,
-    setValues
-  })
+  const { register, handleSubmit, trigger, formState: { errors, isValid } } = form
 
   useEffect(() => {
     if (isDone) void trigger()

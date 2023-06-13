@@ -1,5 +1,5 @@
 import { type Sex } from 'utils/consts'
-import { type FormStepState } from 'pages/FormPage/FormSteps/types'
+import { type FormStepState } from '../types'
 
 export interface StepOneValues {
   nickname: string

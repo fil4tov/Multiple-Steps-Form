@@ -1,10 +1,14 @@
 import { type ReactNode } from 'react'
 import { type Align, type Justify } from '../types'
 
+export interface ModalContextState {
+  onClose: (() => void) | undefined
+}
+
 export interface ModalProps {
   children: ReactNode
   isOpen: boolean
-  onClose: () => void
+  onClose: (() => void) | undefined
   className?: string
 }
 

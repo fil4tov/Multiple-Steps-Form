@@ -1,6 +1,8 @@
 import { type FC } from 'react'
 import { Box } from '../../'
+import { cls } from 'utils/helpers'
 import { type ModalBodyProps } from '../types'
+import styles from './ModalBody.module.scss'
 
 export const ModalBody: FC<ModalBodyProps> = (props) => {
   const {
@@ -12,7 +14,7 @@ export const ModalBody: FC<ModalBodyProps> = (props) => {
 
   return (
     <Box
-      className={className}
+      className={cls([styles.ModalBody, className])}
       align={align}
       justify={justify}
     >

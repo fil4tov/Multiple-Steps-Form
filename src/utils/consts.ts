@@ -1,9 +1,3 @@
-export enum Status {
-  LOADING = 'loading',
-  SUCCESS = 'success',
-  ERROR = 'error'
-}
-
 export enum Tips {
   'REQUIRED' = 'Обязательное поле',
   'MAX_LENGTH' = 'Максимальное кол-во символов',
@@ -31,6 +25,8 @@ export const userLinks = [
 ]
 
 export const userName = 'Данил Непомнящий'
+
+export const BASE_URL = 'https://api.sbercloud.ru'
 
 export const sexOptions: Record<Sex, string> = {
   [Sex.MALE]: 'Male',

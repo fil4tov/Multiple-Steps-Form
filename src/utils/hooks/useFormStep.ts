@@ -1,29 +1,52 @@
-import { useAppDispatch } from './redux'
-import { type ActionCreatorWithPayload } from '@reduxjs/toolkit'
-import { type FieldValues, type UseFormGetValues } from 'react-hook-form'
-import { setCurrentStep } from 'pages/FormPage/slice'
 import { useNavigate } from 'react-router-dom'
+import { type ActionCreatorWithPayload } from '@reduxjs/toolkit'
+import { type DeepPartial, type FieldValues, type Mode, useForm } from 'react-hook-form'
+
+import { getAllValues } from 'store/selectors'
+import { sendForm, setCurrentStep } from 'pages/FormPage/slice'
+import { useAppDispatch, useAppSelector } from 'utils/hooks/'
 
 interface UseSaveStepProps<T extends FieldValues> {
-  getValues: UseFormGetValues<T>
+  values: DeepPartial<T>
   setValues: ActionCreatorWithPayload<T>
   setIsDone: ActionCreatorWithPayload<boolean>
   currentStep: number
-  totalSteps: number
+  mode: Mode
 }
 
 export const useFormStep = <T extends FieldValues> (
-  { setValues, getValues, setIsDone, currentStep, totalSteps }: UseSaveStepProps<T>
+  { setValues, setIsDone, currentStep, values, mode }: UseSaveStepProps<T>
 ) => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
+  const allValues = useAppSelector(getAllValues)
+
+  const { getValues, ...rest } = useForm<T>({
+    mode,
+    defaultValues: values
+  })
 
   const nextStep = (data: T) => {
-    if (currentStep === -1) {
+    if (currentStep === 0) {
       navigate('/create')
     }
     saveData(data)
     dispatch(setCurrentStep(currentStep + 1))
+  }
+
+  const previousStep = () => {
+    if (currentStep === 1) {
+      navigate('/')
+    }
+    saveData(getValues())
+    dispatch(setCurrentStep(currentStep - 1))
+  }
+
+  const submitForm = (data: T) => {
+    dispatch(sendForm({
+      ...allValues,
+      ...data
+    }))
   }
 
   const saveData = (data: T) => {
@@ -31,16 +54,12 @@ export const useFormStep = <T extends FieldValues> (
     dispatch(setIsDone(true))
   }
 
-  const previousStep = () => {
-    if (currentStep === 0) {
-      navigate('/')
-    }
-    saveData(getValues())
-    dispatch(setCurrentStep(currentStep - 1))
-  }
+  const form = { getValues, ...rest }
 
   return {
+    form,
     nextStep,
-    previousStep
+    previousStep,
+    submitForm
   }
 }

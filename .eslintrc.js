@@ -24,12 +24,12 @@ module.exports = {
     'react/display-name': 'off',
     '@typescript-eslint/strict-boolean-expressions': 'off',
     '@typescript-eslint/no-confusing-void-expression': 'off',
+    '@typescript-eslint/no-unused-vars': 'warn',
     'max-len': ['error', {
       code: 100,
       ignoreComments: true
     }],
     'spaced-comment': 'off',
-
-    '@typescript-eslint/no-unused-vars': 'warn'
+    '@typescript-eslint/no-floating-promises': 'off'
   }
 }

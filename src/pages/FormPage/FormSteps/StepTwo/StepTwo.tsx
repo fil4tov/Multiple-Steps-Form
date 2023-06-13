@@ -1,8 +1,5 @@
 import { type FC, Fragment, useEffect } from 'react'
-import {
-  useFieldArray,
-  useForm
-} from 'react-hook-form'
+import { useFieldArray } from 'react-hook-form'
 
 import { FormButtons } from 'components/FormButtons/FormButtons'
 import {
@@ -25,28 +22,18 @@ import { setIsDone, setValues } from './slice'
 import { ReactComponent as Plus } from 'assets/icons/plus.svg'
 import { ReactComponent as Delete } from 'assets/icons/delete.svg'
 
-export const StepTwo: FC<FormStepProps> = ({ currentStep, totalSteps }) => {
+export const StepTwo: FC<FormStepProps> = ({ currentStep }) => {
   const { values, isDone } = useAppSelector(getStepTwoState)
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isValid },
-    getValues,
-    trigger,
-    control
-  } = useForm<StepTwoValues>({
-    mode: 'onChange',
-    defaultValues: values
+  const { form, previousStep, nextStep } = useFormStep<StepTwoValues>({
+    values,
+    currentStep,
+    setIsDone,
+    setValues,
+    mode: 'onChange'
   })
 
-  const { previousStep, nextStep } = useFormStep<StepTwoValues>({
-    totalSteps,
-    currentStep,
-    getValues,
-    setIsDone,
-    setValues
-  })
+  const { register, control, handleSubmit, trigger, formState: { errors, isValid } } = form
 
   const { fields, append, remove } = useFieldArray({
     name: 'advantages',

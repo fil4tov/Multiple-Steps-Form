@@ -12,9 +12,14 @@ export const getAllState = (state: RootState) => state
 
 export const getCurrentStep = (state: RootState) => state.form.currentStep
 
+export const getFormState = (state: RootState) => state.form
+
+export const getFormLoading = (state: RootState) => state.form.isLoading
+
 export const getAllValues = (state: RootState) => ({
   ...state.mainPage.values,
   ...state.stepOne.values,
   ...state.stepTwo.values,
-  ...state.stepThree.values
+  ...state.stepThree.values,
+  advantages: state.stepTwo.values.advantages.map(adv => adv.value)
 })

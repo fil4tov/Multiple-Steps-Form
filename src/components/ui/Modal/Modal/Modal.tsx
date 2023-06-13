@@ -15,7 +15,7 @@ export const Modal: FC<ModalProps> = ({ children, className, isOpen, onClose }) 
 
   const handleCloseOnEsc = (e: KeyboardEvent) => {
     if (e.key === 'Escape') {
-      onClose()
+      onClose?.()
     }
   }
 

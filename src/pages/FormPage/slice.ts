@@ -1,8 +1,24 @@
-import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
+import axios from 'axios'
+import { createAsyncThunk, createSlice, type PayloadAction } from '@reduxjs/toolkit'
+import { type FormPageState, type FormValues } from './types'
+import { BASE_URL } from 'utils/consts'
 
-const initialState = {
-  currentStep: -1
+const initialState: FormPageState = {
+  currentStep: 0,
+  modalIsOpen: false,
+  isSuccess: false,
+  isLoading: false
 }
+
+export const sendForm = createAsyncThunk(
+  'form/sendForm',
+  async (formValues: FormValues) => {
+    const {
+      data
+    } = await axios.post<FormValues>(`${BASE_URL}/content/v1/bootcamp/frontend`, formValues)
+    return data
+  }
+)
 
 const slice = createSlice({
   name: 'form',
@@ -10,9 +26,28 @@ const slice = createSlice({
   reducers: {
     setCurrentStep: (state, action: PayloadAction<number>) => {
       state.currentStep = action.payload
+    },
+    setModalIsOpen: (state, action: PayloadAction<boolean>) => {
+      state.modalIsOpen = action.payload
     }
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(sendForm.pending, state => {
+        state.isLoading = true
+      })
+      .addCase(sendForm.fulfilled, state => {
+        state.isLoading = false
+        state.modalIsOpen = true
+        state.isSuccess = true
+      })
+      .addCase(sendForm.rejected, state => {
+        state.isLoading = false
+        state.modalIsOpen = true
+        state.isSuccess = false
+      })
   }
 })
 
-export const { setCurrentStep } = slice.actions
+export const { setCurrentStep, setModalIsOpen } = slice.actions
 export const form = slice.reducer

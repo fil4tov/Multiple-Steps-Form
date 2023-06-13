@@ -1,13 +1,17 @@
 import { type FC, useEffect, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
+
+import { SuccessTooltip } from 'components/SuccessTooltip/SuccessTooltip'
+import { FailTooltip } from 'components/FailTooltip/FailTooltip'
 import { Box, ProgressBar } from 'components/ui'
+import { useAppSelector, useFormSubmit } from 'utils/hooks'
+import { getFormState } from 'store/selectors'
 import { StepOne, StepTwo, StepThree } from './FormSteps'
-import { useAppSelector } from 'utils/hooks'
-import { getCurrentStep } from 'store/selectors'
 import styles from './FormPage.module.scss'
 
 export const FormPage: FC = () => {
-  const currentStep = useAppSelector(getCurrentStep)
+  const { currentStep, modalIsOpen, isSuccess } = useAppSelector(getFormState)
+  const { closeModal, onSuccess, onFail } = useFormSubmit()
   const navigate = useNavigate()
 
   const formSteps = useMemo(() => {
@@ -15,7 +19,7 @@ export const FormPage: FC = () => {
   }, [])
 
   useEffect(() => {
-    if (currentStep === -1) {
+    if (currentStep === 0) {
       navigate('/', { replace: true })
     }
   }, [currentStep])
@@ -24,9 +28,23 @@ export const FormPage: FC = () => {
     <Box className={styles.FormPage}>
       <ProgressBar totalSteps={formSteps.length} currentStep={currentStep}/>
 
-      {formSteps.map((FormStep, i, arr) => (
-        i === currentStep && <FormStep key={i} totalSteps={arr.length} currentStep={i}/>
+      {formSteps.map((FormStep, i) => (
+        i + 1 === currentStep && <FormStep key={i} currentStep={i + 1}/>
       ))}
+
+      {isSuccess
+        ? <SuccessTooltip
+          title="Форма успешно отправлена"
+          buttonText="На главную"
+          isOpen={modalIsOpen}
+          onAction={onSuccess}
+        />
+        : <FailTooltip
+          title="Ошибка"
+          isOpen={modalIsOpen}
+          onClose={closeModal}
+          onAction={onFail}
+        />}
     </Box>
   )
 }

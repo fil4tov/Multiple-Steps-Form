@@ -1,3 +1,3 @@
-export { cls } from 'utils/helpers/cls'
+export { cls } from './cls'
 export { getNameAbbreviation } from './getNameAbbreviation'
 export { getFormReducers } from './getFormSliceReducers'

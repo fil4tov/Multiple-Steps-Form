@@ -1,8 +1,5 @@
 import { createContext, useContext } from 'react'
-
-interface ModalContextState {
-  onClose: () => void
-}
+import { type ModalContextState } from './types'
 
 export const ModalContext = createContext<ModalContextState>(
   { onClose: () => {} }
