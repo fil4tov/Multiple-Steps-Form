@@ -79,7 +79,7 @@ export const MainPage: FC = () => {
           className={styles.button}
           disabled={!isValid}
         >
-          Начать
+          {isDone ? 'Продолжить' : 'Начать'}
         </Button>
       </form>
     </Box>

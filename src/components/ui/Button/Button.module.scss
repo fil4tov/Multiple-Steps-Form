@@ -2,6 +2,7 @@
 
 .Button {
   @include justify-align-center;
+  gap: var(--space-3);
   width: max-content;
   cursor: pointer;
   padding: var(--space-3) var(--space-4);
@@ -61,4 +62,9 @@
 
 .clear {
   background-color: transparent;
+}
+
+.loader {
+  width: 20px;
+  height: 20px;
 }

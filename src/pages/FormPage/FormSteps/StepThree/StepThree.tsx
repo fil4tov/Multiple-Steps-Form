@@ -56,7 +56,12 @@ export const StepThree: FC<FormStepProps> = ({ currentStep }) => {
         </Box>
       </FormControl>
 
-      <FormButtons submitDisabled={!isValid || isLoading} previousStep={previousStep}/>
+      <FormButtons
+        isLoading={isLoading}
+        isLastStep
+        submitDisabled={!isValid || isLoading}
+        previousStep={previousStep}
+      />
     </form>
   )
 }

@@ -1,5 +1,6 @@
 import { type ButtonHTMLAttributes, type FC } from 'react'
 import { cls } from 'utils/helpers'
+import { Loader } from '../'
 import styles from './Button.module.scss'
 
 export type Variant = 'filled' | 'outlined' | 'clear'
@@ -7,6 +8,7 @@ export type Variant = 'filled' | 'outlined' | 'clear'
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string
   variant?: Variant
+  isLoading?: boolean
 }
 
 export const Button: FC<ButtonProps> = (props) => {
@@ -15,6 +17,7 @@ export const Button: FC<ButtonProps> = (props) => {
     children,
     variant = 'filled',
     type = 'button',
+    isLoading,
     ...otherProps
   } = props
 
@@ -24,6 +27,7 @@ export const Button: FC<ButtonProps> = (props) => {
       type={type}
       className={cls([styles.Button, styles[variant], className])}
     >
+      {isLoading && <Loader className={styles.loader}/>}
       {children}
     </button>
   )

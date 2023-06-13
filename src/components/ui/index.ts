@@ -4,6 +4,7 @@ export { ProgressBar } from './ProgressBar/ProgressBar'
 export { Select } from './Form/Select/Select'
 export { TextArea } from './Form/TextArea/TextArea'
 export { Box } from './Box/Box'
+export { Loader } from './Loader/Loader'
 
 export { Modal } from './Modal/Modal/Modal'
 export { ModalBody } from './Modal/ModalBody/ModalBody'
