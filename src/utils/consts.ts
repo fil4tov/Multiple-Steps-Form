@@ -19,12 +19,17 @@ enum Check {
 }
 
 export const userLinks = [
-  { social: 'Telegram', link: '/' },
-  { social: 'GitHub', link: '/' },
+  { social: 'Telegram', link: 'https://t.me/fil4tov' },
+  { social: 'GitHub', link: 'https://github.com/fil4tov' },
   { social: 'Resume', link: '/' }
 ]
 
-export const userName = 'Данил Непомнящий'
+export const USER = {
+  firstName: 'Данил',
+  lastName: 'Непомнящий',
+  phoneNumber: '+7 (916) 667-71-80',
+  email: 'idioma@mail.ru'
+}
 
 export const BASE_URL = 'https://api.sbercloud.ru'
 

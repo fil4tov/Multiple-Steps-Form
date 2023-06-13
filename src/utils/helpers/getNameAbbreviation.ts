@@ -1,3 +1,3 @@
-export const getNameAbbreviation = (fullName: string): string => {
-  return fullName.split(' ').map(word => word[0]).join('')
+export const getNameAbbreviation = (firstName: string, lastName: string): string => {
+  return firstName[0] + lastName[0]
 }

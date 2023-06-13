@@ -22,7 +22,7 @@ export const FormPage: FC = () => {
     if (currentStep === 0) {
       navigate('/', { replace: true })
     }
-  }, [currentStep])
+  }, [])
 
   return (
     <Box className={styles.FormPage}>

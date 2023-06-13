@@ -1,8 +1,17 @@
 @import "styles/mixins";
 
 .FormPage {
-  padding: 60px 110px;
+  padding: calc(var(--space-unit) * 15) calc(var(--space-unit) * 27);
   gap: calc(var(--space-unit) * 17);
+
+  @media (max-width: 768px) {
+    padding: calc(var(--space-unit) * 15) calc(var(--space-unit) * 10);
+  }
+
+  @media (max-width: 425px) {
+    padding: calc(var(--space-unit) * 15) calc(var(--space-unit) * 5);
+    gap: calc(var(--space-unit) * 10);
+  }
 
   form {
     @include column;

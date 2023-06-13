@@ -1,7 +1,7 @@
 import { type FC } from 'react'
 import { cls, getNameAbbreviation } from 'utils/helpers'
 import { UserLink } from '../UserLink/UserLink'
-import { userName, userLinks } from 'utils/consts'
+import { USER, userLinks } from 'utils/consts'
 import { Box } from 'components/ui'
 import styles from './UserInfo.module.scss'
 
@@ -18,11 +18,11 @@ export const UserInfo: FC<UserInfoProps> = ({ className }) => {
       className={cls([styles.UserInfo, className])}
     >
       <Box justify='center' align='center' className={styles.avatar}>
-        <span>{getNameAbbreviation(userName)}</span>
+        <span>{getNameAbbreviation(USER.firstName, USER.lastName)}</span>
       </Box>
 
       <Box justify='center' gap={2}>
-        <p className={styles.name}>{userName}</p>
+        <p className={styles.name}>{`${USER.firstName} ${USER.lastName}`}</p>
         <ul className={styles.links}>
           {userLinks.map(({ link, social }, i) => (
             <UserLink key={i} text={social} link={link} />

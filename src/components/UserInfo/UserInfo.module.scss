@@ -1,5 +1,11 @@
 @import "styles/mixins.scss";
 
+.UserInfo {
+  @media (max-width: 425px) {
+    justify-content: center;
+  }
+}
+
 .UserInfo::after {
   display: block;
   content: '';
