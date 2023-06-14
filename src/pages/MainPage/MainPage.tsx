@@ -10,7 +10,7 @@ import {
 } from 'components/ui'
 import { useAppSelector, useFormStep, usePhoneMask } from 'utils/hooks'
 import { getCurrentStep, getMainPageState } from 'store/selectors'
-import { Tips } from 'utils/consts'
+import { Tips, regex } from 'utils/consts'
 
 import { type MainPageValues } from './types'
 import { setIsDone, setValues } from './slice'
@@ -64,7 +64,7 @@ export const MainPage: FC = () => {
             {...register('email', {
               required: Tips.REQUIRED,
               pattern: {
-                value: /^[a-zA-Z0-9_.-]+@[a-zA-Z]{2,}\.[a-zA-Z]{2,}$/,
+                value: regex.email,
                 message: Tips.EMAIL
               }
             })}

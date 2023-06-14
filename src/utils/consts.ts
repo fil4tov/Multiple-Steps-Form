@@ -43,3 +43,10 @@ export const checkOptions: Record<Check, number> = {
   [Check.SECOND_OPTION]: 2,
   [Check.THIRD_OPTION]: 3
 }
+
+export const regex = {
+  email: /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9]{2,}\.[a-zA-Z]{2,}$/,
+  nickname: /^[a-zA-Z0-9]+$/,
+  name: /^[a-zA-Zа-яА-яёЁ]+$/,
+  surname: /^[a-zA-Zа-яА-яёЁ]+$/
+}

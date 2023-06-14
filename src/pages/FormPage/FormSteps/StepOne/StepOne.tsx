@@ -8,7 +8,7 @@ import {
   Select
 } from 'components/ui'
 import { useAppSelector, useFormStep } from 'utils/hooks'
-import { sexOptions, Tips } from 'utils/consts'
+import { regex, sexOptions, Tips } from 'utils/consts'
 import { getStepOneState } from 'store/selectors'
 
 import { type FormStepProps } from '../types'
@@ -48,7 +48,7 @@ export const StepOne: FC<FormStepProps> = ({ currentStep }) => {
               message: `${Tips.MAX_LENGTH} 30`
             },
             pattern: {
-              value: /^[a-zA-Z0-9]+$/,
+              value: regex.nickname,
               message: Tips.LETTERS_EN_AND_NUMBERS
             }
           })}
@@ -67,7 +67,7 @@ export const StepOne: FC<FormStepProps> = ({ currentStep }) => {
               message: `${Tips.MAX_LENGTH} 50`
             },
             pattern: {
-              value: /^[a-zA-Zа-яА-яёЁ]+$/,
+              value: regex.name,
               message: Tips.LETTERS_EN_RU
             }
           })}
@@ -86,7 +86,7 @@ export const StepOne: FC<FormStepProps> = ({ currentStep }) => {
               message: `${Tips.MAX_LENGTH} 50`
             },
             pattern: {
-              value: /^[a-zA-Zа-яА-яёЁ]+$/,
+              value: regex.surname,
               message: Tips.LETTERS_EN_RU
             }
           })}
