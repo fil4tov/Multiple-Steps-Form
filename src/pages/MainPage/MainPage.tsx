@@ -19,8 +19,8 @@ import styles from './MainPage.module.scss'
 
 export const MainPage: FC = () => {
   const { values, isDone } = useAppSelector(getMainPageState)
-  const { onChange, onKeyDown } = usePhoneMask()
   const currentStep = useAppSelector(getCurrentStep)
+  const { onChange, onKeyDown } = usePhoneMask()
 
   const { form, nextStep } = useFormStep<MainPageValues>({
     values,
@@ -64,7 +64,7 @@ export const MainPage: FC = () => {
             {...register('email', {
               required: Tips.REQUIRED,
               pattern: {
-                value: /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/,
+                value: /^[a-zA-Z0-9_.-]+@[a-zA-Z]{2,}\.[a-zA-Z]{2,}$/,
                 message: Tips.EMAIL
               }
             })}

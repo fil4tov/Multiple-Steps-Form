@@ -1,20 +1,22 @@
 .iconContainer {
   position: relative;
-}
 
-.iconBg {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 0;
-  height: 0;
-  border-radius: var(--border-circle);
-  transition: var(--transition-time) ease-in-out;
-  transition-delay: .3s;
+  & svg {
+    z-index: 2;
+  }
 
-  &.opened {
-    animation: open .4s ease-in-out forwards;
+  & .iconBg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    border-radius: var(--border-circle);
+
+    &.opened {
+      animation: open .4s .2s ease-in-out forwards;
+    }
   }
 }
 
