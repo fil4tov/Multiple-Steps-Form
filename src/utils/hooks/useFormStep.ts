@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { type ActionCreatorWithPayload } from '@reduxjs/toolkit'
 import { type DeepPartial, type FieldValues, type Mode, useForm } from 'react-hook-form'
@@ -25,6 +26,13 @@ export const useFormStep = <T extends FieldValues> (
     mode,
     defaultValues: values
   })
+
+  //Предотвращает баг при переходе домой с формы через кнопки на мыше
+  useEffect(() => {
+    if (location.pathname === '/') {
+      dispatch(setCurrentStep(0))
+    }
+  }, [location.pathname])
 
   const nextStep = (data: T) => {
     if (currentStep === 0) {
