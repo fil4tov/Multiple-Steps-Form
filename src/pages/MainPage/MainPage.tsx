@@ -1,5 +1,5 @@
 import { type FC, useEffect } from 'react'
-import { UserInfo } from 'components/UserInfo/UserInfo'
+import { UserInfo } from 'components/'
 import {
   Box,
   Button,

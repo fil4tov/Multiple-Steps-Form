@@ -1,6 +1,6 @@
 import { Fragment, type FC } from 'react'
 import { cls } from 'utils/helpers'
-import { Box } from 'components/ui/Box/Box'
+import { Box } from '../'
 import styles from './ProgressBar.module.scss'
 
 interface ProgressBarProps {

@@ -1,7 +1,7 @@
 import { type FC } from 'react'
 import { cls } from 'utils/helpers'
 import styles from './FormError.module.scss'
-import { type Stick } from 'components/ui/types'
+import { type Stick } from '../../types'
 
 interface FormErrorProps {
   className?: string

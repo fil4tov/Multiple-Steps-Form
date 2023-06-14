@@ -1,6 +1,6 @@
 import { type FC } from 'react'
 import { cls } from 'utils/helpers'
-import { ReactComponent as Folder } from 'assets/icons/folder.svg'
+import { Folder } from 'components/ui/Icons'
 import styles from './UserLink.module.scss'
 
 interface UserLinkProps {

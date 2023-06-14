@@ -1,5 +1,5 @@
 import { type FC, useEffect } from 'react'
-import { FormButtons } from 'components/FormButtons/FormButtons'
+import { FormButtons } from 'components/'
 import {
   FormControl,
   FormError,

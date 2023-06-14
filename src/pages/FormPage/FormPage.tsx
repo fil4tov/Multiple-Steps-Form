@@ -1,8 +1,7 @@
 import { type FC, useEffect, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { SuccessTooltip } from 'components/SuccessTooltip/SuccessTooltip'
-import { FailTooltip } from 'components/FailTooltip/FailTooltip'
+import { SuccessTooltip, FailTooltip } from 'components/'
 import { Box, ProgressBar } from 'components/ui'
 import { useAppSelector, useFormSubmit } from 'utils/hooks'
 import { getFormState } from 'store/selectors'

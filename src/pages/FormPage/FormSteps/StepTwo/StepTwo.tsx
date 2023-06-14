@@ -1,7 +1,7 @@
 import { type FC, Fragment, useEffect } from 'react'
 import { useFieldArray } from 'react-hook-form'
 
-import { FormButtons } from 'components/FormButtons/FormButtons'
+import { FormButtons } from 'components/'
 import {
   Box,
   Button,
@@ -11,6 +11,7 @@ import {
   FormLabel,
   Input
 } from 'components/ui'
+import { Delete, Plus } from 'components/ui/Icons'
 import { useAppSelector, useFormStep } from 'utils/hooks'
 import { checkOptions, Tips } from 'utils/consts'
 import { getStepTwoState } from 'store/selectors'
@@ -18,9 +19,6 @@ import { getStepTwoState } from 'store/selectors'
 import { type FormStepProps } from '../types'
 import { type StepTwoValues } from './types'
 import { setIsDone, setValues } from './slice'
-
-import { ReactComponent as Plus } from 'assets/icons/plus.svg'
-import { ReactComponent as Delete } from 'assets/icons/delete.svg'
 
 export const StepTwo: FC<FormStepProps> = ({ currentStep }) => {
   const { values, isDone } = useAppSelector(getStepTwoState)

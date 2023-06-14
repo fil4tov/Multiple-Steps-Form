@@ -1,6 +1,6 @@
 import { type FC } from 'react'
-import styles from './Loader.module.scss'
 import { cls } from 'utils/helpers'
+import styles from './Loader.module.scss'
 
 interface LoaderProps {
   className?: string

@@ -9,8 +9,8 @@ import {
   ModalOverlay
 } from 'components/ui'
 import { Fail } from 'components/ui/Icons'
-import { TooltipIcon } from 'components/TooltipIcon/TooltipIcon'
-import styles from 'components/FailTooltip/FailTooltip.module.scss'
+import { TooltipIcon } from '../TooltipIcon/TooltipIcon'
+import styles from './FailTooltip.module.scss'
 
 interface FailTooltipProps {
   title: string

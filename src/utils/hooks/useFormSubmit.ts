@@ -10,6 +10,8 @@ export const useFormSubmit = () => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
 
+  const resets = [resetMainPage, resetStepOne, resetStepTwo, resetStepTree]
+
   const closeModal = () => {
     dispatch(setModalIsOpen(false))
   }
@@ -17,10 +19,7 @@ export const useFormSubmit = () => {
   const onSuccess = () => {
     closeModal()
     navigate('/', { replace: true })
-    dispatch(resetMainPage())
-    dispatch(resetStepOne())
-    dispatch(resetStepTwo())
-    dispatch(resetStepTree())
+    resets.forEach(reset => dispatch(reset()))
     dispatch(setCurrentStep(0))
   }
 

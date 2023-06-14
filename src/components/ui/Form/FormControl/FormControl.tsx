@@ -1,5 +1,5 @@
 import { createContext, type FC, type ReactNode, useContext, useMemo } from 'react'
-import { Box } from 'components/ui/Box/Box'
+import { Box } from '../../'
 
 interface FormControlProps {
   children: ReactNode

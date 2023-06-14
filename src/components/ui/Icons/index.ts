@@ -1,2 +1,5 @@
 export { Success } from './Success'
 export { Fail } from './Fail'
+export { Folder } from './Folder'
+export { Delete } from './Delete'
+export { Plus } from './Plus'

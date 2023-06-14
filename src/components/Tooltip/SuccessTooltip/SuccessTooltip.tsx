@@ -9,7 +9,7 @@ import {
   ModalOverlay
 } from 'components/ui'
 import { Success } from 'components/ui/Icons'
-import { TooltipIcon } from 'components/TooltipIcon/TooltipIcon'
+import { TooltipIcon } from '../TooltipIcon/TooltipIcon'
 import styles from './SuccessTooltip.module.scss'
 
 interface SuccessTooltipProps {
