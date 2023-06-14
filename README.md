@@ -17,4 +17,4 @@ npm start
 ```
 
 ## Демо
-Приложение можно посмотреть по [этой ссылке](https://fil4tov.github.io/multiple-steps-form/)
+Приложение можно посмотреть по [этой ссылке](https://multiple-steps-form.vercel.app/)
