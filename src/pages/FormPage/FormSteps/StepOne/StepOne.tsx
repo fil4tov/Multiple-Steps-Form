@@ -108,7 +108,7 @@ export const StepOne: FC<FormStepProps> = ({ currentStep }) => {
           id='field-sex'
         >
           {Object.entries(sexOptions).map(([key, value]) => (
-            <option key={key} value={key}>{value}</option>
+            <option key={key} value={key} id={`field-sex-option-${key}`}>{value}</option>
           ))}
         </Select>
         <FormError text={errors.sex?.message}/>
