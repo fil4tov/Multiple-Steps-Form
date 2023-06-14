@@ -49,7 +49,7 @@ export const StepOne: FC<FormStepProps> = ({ currentStep }) => {
             },
             pattern: {
               value: regex.nickname,
-              message: Tips.LETTERS_EN_AND_NUMBERS
+              message: Tips.LETTERS_EN_RU_AND_NUMBERS
             }
           })}
           placeholder="Nickname..."
