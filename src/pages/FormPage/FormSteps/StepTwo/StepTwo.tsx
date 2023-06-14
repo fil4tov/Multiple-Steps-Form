@@ -62,12 +62,14 @@ export const StepTwo: FC<FormStepProps> = ({ currentStep }) => {
                 {...register(`advantages.${index}.value`, {
                   required: Tips.REQUIRED
                 })}
-                placeholder={'Placeholder...'}
+                placeholder='Placeholder...'
+                id={`field-advantages-${index + 1}`}
               />
               <Button
                 disabled={arr.length === 1}
                 variant="clear"
                 onClick={removeInput(index)}
+                id={`button-remove-${index + 1}`}
               >
                 <Delete/>
               </Button>
@@ -76,20 +78,21 @@ export const StepTwo: FC<FormStepProps> = ({ currentStep }) => {
           </Fragment>
         ))}
 
-        <Button variant="outlined" onClick={addInput}>
+        <Button variant="outlined" onClick={addInput} id='button-add'>
           <Plus/>
         </Button>
       </FormControl>
 
       <FormControl isRequired>
         <FormLabel text="Checkbox group"/>
-        {Object.entries(checkOptions).map(([key, value]) => (
+        {Object.entries(checkOptions).map(([key, value], index) => (
           <Check
+            {...register('checkboxGroup', { required: Tips.REQUIRED })}
             type="checkbox"
             key={key}
             label={key}
             value={value}
-            {...register('checkboxGroup', { required: Tips.REQUIRED })}
+            id={`field-checkbox-group-option-${index + 1}`}
           />
         ))}
         <FormError text={errors.checkboxGroup?.message}/>
@@ -97,13 +100,14 @@ export const StepTwo: FC<FormStepProps> = ({ currentStep }) => {
 
       <FormControl isRequired>
         <FormLabel text="Radio group"/>
-        {Object.entries(checkOptions).map(([key, value]) => (
+        {Object.entries(checkOptions).map(([key, value], index) => (
           <Check
+            {...register('radioGroup', { required: Tips.REQUIRED })}
             type="radio"
             key={key}
             label={key}
             value={value}
-            {...register('radioGroup', { required: Tips.REQUIRED })}
+            id={`field-radio-group-option-${index + 1}`}
           />
         ))}
         <FormError text={errors.radioGroup?.message}/>

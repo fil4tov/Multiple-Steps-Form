@@ -78,6 +78,7 @@ export const MainPage: FC = () => {
           type="submit"
           className={styles.button}
           disabled={!isValid}
+          id='button-start'
         >
           {isDone ? 'Продолжить' : 'Начать'}
         </Button>

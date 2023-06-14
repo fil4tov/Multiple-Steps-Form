@@ -53,6 +53,7 @@ export const StepOne: FC<FormStepProps> = ({ currentStep }) => {
             }
           })}
           placeholder="Nickname..."
+          id='field-nickname'
         />
         <FormError text={errors?.nickname?.message}/>
       </FormControl>
@@ -72,6 +73,7 @@ export const StepOne: FC<FormStepProps> = ({ currentStep }) => {
             }
           })}
           placeholder="Name..."
+          id='field-name'
         />
         <FormError text={errors.name?.message}/>
       </FormControl>
@@ -91,6 +93,7 @@ export const StepOne: FC<FormStepProps> = ({ currentStep }) => {
             }
           })}
           placeholder="Surname..."
+          id='field-surname'
         />
         <FormError text={errors.surname?.message}/>
       </FormControl>
@@ -102,6 +105,7 @@ export const StepOne: FC<FormStepProps> = ({ currentStep }) => {
             required: Tips.REQUIRED
           })}
           placeholder="Не выбрано"
+          id='field-sex'
         >
           {Object.entries(sexOptions).map(([key, value]) => (
             <option key={key} value={key}>{value}</option>

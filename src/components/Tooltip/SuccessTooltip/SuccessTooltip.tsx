@@ -35,7 +35,7 @@ export const SuccessTooltip: FC<SuccessTooltipProps> = (props) => {
         />
       </ModalBody>
       <ModalFooter justify='center'>
-        <Button onClick={onAction}>
+        <Button onClick={onAction} id='button-to-main'>
           {buttonText}
         </Button>
       </ModalFooter>

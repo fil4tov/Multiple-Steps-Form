@@ -49,6 +49,7 @@ export const StepThree: FC<FormStepProps> = ({ currentStep }) => {
             }
           })}
           placeholder="Placeholder..."
+          id='field-about'
         />
         <Box>
           <FormError text={errors?.about?.message}/>

@@ -19,11 +19,19 @@ export const FormButtons: FC<FormButtonsProps> = (props) => {
       justify='between'
       direction='row'
     >
-      <Button onClick={previousStep} variant="outlined">Назад</Button>
+      <Button
+        onClick={previousStep}
+        variant="outlined"
+        id='button-back'
+      >
+        Назад
+      </Button>
+
       <Button
         isLoading={isLoading}
         disabled={submitDisabled}
         type="submit"
+        id={isLastStep ? 'button-send' : 'button-next'}
       >
         {isLastStep ? 'Отправить' : 'Далее'}
       </Button>

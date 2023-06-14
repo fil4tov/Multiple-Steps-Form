@@ -35,7 +35,7 @@ export const FailTooltip: FC<FailTooltipProps> = (props) => {
         />
       </ModalBody>
       <ModalFooter justify='end'>
-        <Button onClick={onAction}>
+        <Button onClick={onAction} id='button-close'>
           Закрыть
         </Button>
       </ModalFooter>
