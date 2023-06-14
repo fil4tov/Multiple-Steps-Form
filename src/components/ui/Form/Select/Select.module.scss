@@ -1,3 +1,10 @@
 .Select {
-  border: 0;
+  -moz-appearance:none;
+  -webkit-appearance:none;
+  appearance:none;
+  background-image: url('../../../../assets/icons/arrow.svg');
+  background-repeat: no-repeat;
+  background-size: 12px 8px;
+  background-position: right 15px top 50%;
+  cursor: pointer;
 }

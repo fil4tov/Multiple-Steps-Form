@@ -18,12 +18,12 @@ export const Button: FC<ButtonProps> = (props) => {
     variant = 'filled',
     type = 'button',
     isLoading,
-    ...otherProps
+    ...rest
   } = props
 
   return (
     <button
-      {...otherProps}
+      {...rest}
       type={type}
       className={cls([styles.Button, styles[variant], className])}
     >

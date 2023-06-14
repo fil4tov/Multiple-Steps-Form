@@ -11,14 +11,14 @@ interface CheckProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 export const Check = React.forwardRef<HTMLInputElement, CheckProps>((props, ref) => {
-  const { className, label, type, ...otherProps } = props
+  const { className, label, type, ...rest } = props
   return (
     <label className={cls([styles.label, className])}>
       <input
         ref={ref}
         className={styles.Check}
         type={type}
-        {...otherProps}
+        {...rest}
       />
       <span className={cls(
         ['check', styles.customCheck, styles[type]]
