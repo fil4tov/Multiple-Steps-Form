@@ -8,24 +8,36 @@ import { sendForm, setCurrentStep } from 'pages/FormPage/slice'
 import { useAppDispatch, useAppSelector } from 'utils/hooks/'
 
 interface UseFormStepProps<T extends FieldValues> {
-  values: DeepPartial<T>
+  formStepState: {
+    values: DeepPartial<T>
+    isDone: boolean
+  }
   setValues: ActionCreatorWithPayload<T>
   setIsDone: ActionCreatorWithPayload<boolean>
-  currentStep: number
   mode: Mode
+  currentStep: number
 }
 
-export const useFormStep = <T extends FieldValues> (
-  { setValues, setIsDone, currentStep, values, mode }: UseFormStepProps<T>
+export const useFormStep = <T extends FieldValues>({
+  formStepState: { isDone, values },
+  setValues,
+  setIsDone,
+  currentStep,
+  mode
+}: UseFormStepProps<T>
 ) => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
   const allValues = useAppSelector(getAllValues)
 
-  const { getValues, ...rest } = useForm<T>({
+  const { getValues, trigger, ...rest } = useForm<T>({
     mode,
     defaultValues: values
   })
+
+  useEffect(() => {
+    if (isDone) void trigger()
+  }, [])
 
   //Предотвращает баг при переходе домой с формы через кнопки на мыше
   useEffect(() => {
@@ -62,7 +74,7 @@ export const useFormStep = <T extends FieldValues> (
     dispatch(setIsDone(true))
   }
 
-  const form = { getValues, ...rest }
+  const form = { getValues, trigger, ...rest }
 
   return {
     form,

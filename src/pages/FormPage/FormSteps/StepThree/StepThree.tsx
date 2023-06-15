@@ -1,4 +1,4 @@
-import { type FC, useEffect } from 'react'
+import { type FC } from 'react'
 
 import { FormButtons } from 'components/'
 import {
@@ -17,25 +17,21 @@ import { type StepThreeValues } from './types'
 import { setIsDone, setValues } from './slice'
 
 export const StepThree: FC = () => {
-  const { values, isDone } = useAppSelector(getStepThreeState)
+  const stepThreeState = useAppSelector(getStepThreeState)
   const isLoading = useAppSelector(getFormLoading)
   const currentStep = useAppSelector(getCurrentStep)
 
   const { form, previousStep, submitForm } = useFormStep<StepThreeValues>({
-    values,
+    formStepState: stepThreeState,
     currentStep,
     setIsDone,
     setValues,
     mode: 'onChange'
   })
 
-  const { register, handleSubmit, trigger, watch, formState: { errors, isValid } } = form
+  const { register, handleSubmit, watch, formState: { errors, isValid } } = form
 
   const aboutValueLength = watch('about')?.replace(/\s+/g, '').length
-
-  useEffect(() => {
-    if (isDone) void trigger()
-  }, [])
 
   return (
     <form onSubmit={handleSubmit(submitForm)}>

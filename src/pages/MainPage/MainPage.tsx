@@ -1,4 +1,4 @@
-import { type FC, useEffect } from 'react'
+import { type FC } from 'react'
 import { UserInfo } from 'components/'
 import {
   Box,
@@ -18,23 +18,19 @@ import { setIsDone, setValues } from './slice'
 import styles from './MainPage.module.scss'
 
 export const MainPage: FC = () => {
-  const { values, isDone } = useAppSelector(getMainPageState)
+  const mainPageState = useAppSelector(getMainPageState)
   const currentStep = useAppSelector(getCurrentStep)
   const { onChange, onKeyDown } = usePhoneMask()
 
   const { form, nextStep } = useFormStep<MainPageValues>({
-    values,
+    formStepState: mainPageState,
     currentStep,
     setIsDone,
     setValues,
     mode: 'onChange'
   })
 
-  const { register, handleSubmit, trigger, formState: { errors, isValid } } = form
-
-  useEffect(() => {
-    if (isDone) void trigger()
-  }, [])
+  const { register, handleSubmit, formState: { errors, isValid } } = form
 
   return (
     <Box className={styles.MainPage}>
@@ -80,7 +76,7 @@ export const MainPage: FC = () => {
           disabled={!isValid}
           id='button-start'
         >
-          {isDone ? 'Продолжить' : 'Начать'}
+          {mainPageState.isDone ? 'Продолжить' : 'Начать'}
         </Button>
       </form>
     </Box>

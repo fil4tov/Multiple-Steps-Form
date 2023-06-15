@@ -1,4 +1,4 @@
-import { type FC, Fragment, useEffect } from 'react'
+import { type FC, Fragment } from 'react'
 import { useFieldArray } from 'react-hook-form'
 
 import { FormButtons } from 'components/'
@@ -20,18 +20,18 @@ import { type StepTwoValues } from './types'
 import { setIsDone, setValues } from './slice'
 
 export const StepTwo: FC = () => {
-  const { values, isDone } = useAppSelector(getStepTwoState)
+  const stepTwoState = useAppSelector(getStepTwoState)
   const currentStep = useAppSelector(getCurrentStep)
 
   const { form, previousStep, nextStep } = useFormStep<StepTwoValues>({
-    values,
+    formStepState: stepTwoState,
     currentStep,
     setIsDone,
     setValues,
     mode: 'onChange'
   })
 
-  const { register, control, handleSubmit, trigger, formState: { errors, isValid } } = form
+  const { register, control, handleSubmit, formState: { errors, isValid } } = form
 
   const { fields, append, remove } = useFieldArray({
     name: 'advantages',
@@ -45,10 +45,6 @@ export const StepTwo: FC = () => {
   const removeInput = (index: number) => () => {
     remove(index)
   }
-
-  useEffect(() => {
-    if (isDone) void trigger()
-  }, [])
 
   return (
     <form onSubmit={handleSubmit(nextStep)}>
