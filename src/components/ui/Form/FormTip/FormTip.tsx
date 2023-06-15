@@ -11,11 +11,9 @@ interface FormTipProps {
 }
 
 export const FormTip: FC<FormTipProps> = ({ className, tip, stick }) => {
-  const marginClass = `margin-${stick ?? ''}`
-
   return (
     <span className={cls([styles.FormTip, className], {
-      [marginClass]: Boolean(stick)
+      [`margin-${stick}`]: Boolean(stick)
     })}>
       {tip}
     </span>

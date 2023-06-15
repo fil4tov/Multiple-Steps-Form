@@ -35,11 +35,11 @@ export const Box: FC<BoxProps> = (props) => {
   return (
     <div
       className={cls([styles.Box, className], {
-        [`align-${align ?? ''}`]: Boolean(align),
-        [`justify-${justify ?? ''}`]: Boolean(justify),
-        [`direction-${direction ?? ''}`]: Boolean(direction),
-        [`gap-${gap ?? ''}`]: Boolean(gap),
-        [wrap ?? '']: Boolean(wrap)
+        [`align-${align}`]: Boolean(align),
+        [`justify-${justify}`]: Boolean(justify),
+        [`direction-${direction}`]: Boolean(direction),
+        [`gap-${gap}`]: Boolean(gap),
+        [`${wrap}`]: Boolean(wrap)
       })}
       {...rest}
     >

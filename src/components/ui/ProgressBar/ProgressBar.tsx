@@ -9,9 +9,7 @@ interface ProgressBarProps {
   currentStep: number
 }
 
-export const ProgressBar: FC<ProgressBarProps> = ({ className, totalSteps, currentStep: step }) => {
-  const currentStep = step - 1
-
+export const ProgressBar: FC<ProgressBarProps> = ({ className, totalSteps, currentStep }) => {
   return (
     <Box
       direction='row'
@@ -24,15 +22,15 @@ export const ProgressBar: FC<ProgressBarProps> = ({ className, totalSteps, curre
           {i === 0
             ? null
             : <div className={cls([styles.line], {
-              [styles.filled]: i <= currentStep
+              [styles.filled]: i < currentStep
             })}/>}
 
           <div className={cls([styles.circle], {
-            [styles.current]: i === currentStep,
-            [styles.done]: i < currentStep
+            [styles.current]: i === currentStep - 1,
+            [styles.done]: i < currentStep - 1
           })}>
             <span className={cls([styles.step], {
-              [styles.done]: i <= currentStep
+              [styles.done]: i < currentStep
             })}>{i + 1}</span>
           </div>
 

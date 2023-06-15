@@ -15,7 +15,7 @@ export const FormLabel: FC<FormLabelProps> = ({ className, text }) => {
   return (
     <label className={cls([styles.FormLabel, className])}>
       {text}
-      {isRequired ? <span className={styles.required}>*</span> : ''}
+      {isRequired && <span className={styles.required}>*</span>}
     </label>
   )
 }

@@ -10,13 +10,11 @@ interface FormErrorProps {
 }
 
 export const FormError: FC<FormErrorProps> = ({ className, text, stick }) => {
-  const marginClass = `margin-${stick ?? ''}`
-
   return (
     <>
       {text && (
         <span className={cls([styles.FormError, className], {
-          [marginClass]: Boolean(stick)
+          [`margin-${stick}`]: Boolean(stick)
         })}>
           {text}
         </span>
