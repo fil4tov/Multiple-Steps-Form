@@ -18,8 +18,8 @@ import { setIsDone, setValues } from './slice'
 
 export const StepThree: FC = () => {
   const formStepState = useAppSelector(getStepThreeState)
-  const isLoading = useAppSelector(getFormLoading)
   const currentStep = useAppSelector(getCurrentStep)
+  const isLoading = useAppSelector(getFormLoading)
 
   const { form, previousStep, submitForm } = useFormStep<StepThreeValues>({
     formStepState,

@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom'
 import { type ActionCreatorWithPayload } from '@reduxjs/toolkit'
 import { type DeepPartial, type Mode, useForm } from 'react-hook-form'
 
+import { useAppDispatch, useAppSelector } from 'utils/hooks/'
 import { getAllValues } from 'store/selectors'
 import { sendForm, setCurrentStep } from 'pages/FormPage/slice'
-import { useAppDispatch, useAppSelector } from 'utils/hooks/'
 import { type FormStepState, type FormStepValues } from 'pages/FormPage/FormSteps/types'
 
 interface UseFormStepProps<T extends FormStepValues> {
@@ -37,7 +37,7 @@ export const useFormStep = <T extends FormStepValues>({
     if (isDone) void trigger()
   }, [])
 
-  //Предотвращает баг при переходе домой с формы через кнопки на мыше
+  //Предотвращает баг при переходе домой с формы через кнопку назад
   useEffect(() => {
     if (location.pathname === '/') {
       dispatch(setCurrentStep(0))
