@@ -17,12 +17,12 @@ import { type StepThreeValues } from './types'
 import { setIsDone, setValues } from './slice'
 
 export const StepThree: FC = () => {
-  const stepThreeState = useAppSelector(getStepThreeState)
+  const formStepState = useAppSelector(getStepThreeState)
   const isLoading = useAppSelector(getFormLoading)
   const currentStep = useAppSelector(getCurrentStep)
 
   const { form, previousStep, submitForm } = useFormStep<StepThreeValues>({
-    formStepState: stepThreeState,
+    formStepState,
     currentStep,
     setIsDone,
     setValues,

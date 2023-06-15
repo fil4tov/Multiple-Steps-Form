@@ -4,6 +4,4 @@ export interface StepThreeValues {
   about: string
 }
 
-export interface StepThreeState extends FormStepState {
-  values: StepThreeValues
-}
+export type StepThreeState = FormStepState<StepThreeValues>

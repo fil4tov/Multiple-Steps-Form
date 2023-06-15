@@ -4,6 +4,4 @@ export interface MainPageValues {
   phone: string
   email: string
 }
-export interface MainPageState extends FormStepState {
-  values: MainPageValues
-}
+export type MainPageState = FormStepState<MainPageValues>

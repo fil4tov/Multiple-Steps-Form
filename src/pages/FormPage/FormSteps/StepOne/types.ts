@@ -8,6 +8,4 @@ export interface StepOneValues {
   sex: '' | Sex
 }
 
-export interface StepOneState extends FormStepState {
-  values: StepOneValues
-}
+export type StepOneState = FormStepState<StepOneValues>

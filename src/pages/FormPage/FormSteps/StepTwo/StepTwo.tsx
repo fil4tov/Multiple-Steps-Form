@@ -20,11 +20,11 @@ import { type StepTwoValues } from './types'
 import { setIsDone, setValues } from './slice'
 
 export const StepTwo: FC = () => {
-  const stepTwoState = useAppSelector(getStepTwoState)
+  const formStepState = useAppSelector(getStepTwoState)
   const currentStep = useAppSelector(getCurrentStep)
 
   const { form, previousStep, nextStep } = useFormStep<StepTwoValues>({
-    formStepState: stepTwoState,
+    formStepState,
     currentStep,
     setIsDone,
     setValues,

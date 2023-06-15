@@ -1,24 +1,22 @@
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { type ActionCreatorWithPayload } from '@reduxjs/toolkit'
-import { type DeepPartial, type FieldValues, type Mode, useForm } from 'react-hook-form'
+import { type DeepPartial, type Mode, useForm } from 'react-hook-form'
 
 import { getAllValues } from 'store/selectors'
 import { sendForm, setCurrentStep } from 'pages/FormPage/slice'
 import { useAppDispatch, useAppSelector } from 'utils/hooks/'
+import { type FormStepState, type FormStepValues } from 'pages/FormPage/FormSteps/types'
 
-interface UseFormStepProps<T extends FieldValues> {
-  formStepState: {
-    values: DeepPartial<T>
-    isDone: boolean
-  }
+interface UseFormStepProps<T extends FormStepValues> {
+  formStepState: FormStepState<T>
   setValues: ActionCreatorWithPayload<T>
   setIsDone: ActionCreatorWithPayload<boolean>
   mode: Mode
   currentStep: number
 }
 
-export const useFormStep = <T extends FieldValues>({
+export const useFormStep = <T extends FormStepValues>({
   formStepState: { isDone, values },
   setValues,
   setIsDone,
@@ -32,7 +30,7 @@ export const useFormStep = <T extends FieldValues>({
 
   const { getValues, trigger, ...rest } = useForm<T>({
     mode,
-    defaultValues: values
+    defaultValues: values as DeepPartial<T>
   })
 
   useEffect(() => {

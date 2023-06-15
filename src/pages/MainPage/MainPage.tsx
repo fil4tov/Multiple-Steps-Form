@@ -18,12 +18,12 @@ import { setIsDone, setValues } from './slice'
 import styles from './MainPage.module.scss'
 
 export const MainPage: FC = () => {
-  const mainPageState = useAppSelector(getMainPageState)
+  const formStepState = useAppSelector(getMainPageState)
   const currentStep = useAppSelector(getCurrentStep)
   const { onChange, onKeyDown } = usePhoneMask()
 
   const { form, nextStep } = useFormStep<MainPageValues>({
-    formStepState: mainPageState,
+    formStepState,
     currentStep,
     setIsDone,
     setValues,
@@ -76,7 +76,7 @@ export const MainPage: FC = () => {
           disabled={!isValid}
           id='button-start'
         >
-          {mainPageState.isDone ? 'Продолжить' : 'Начать'}
+          {formStepState.isDone ? 'Продолжить' : 'Начать'}
         </Button>
       </form>
     </Box>

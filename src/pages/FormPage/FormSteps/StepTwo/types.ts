@@ -10,6 +10,4 @@ export interface StepTwoValues {
   radioGroup: number
 }
 
-export interface StepTwoState extends FormStepState {
-  values: StepTwoValues
-}
+export type StepTwoState = FormStepState<StepTwoValues>

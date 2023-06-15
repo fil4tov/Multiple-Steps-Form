@@ -21,5 +21,5 @@ export const getAllValues = (state: RootState) => ({
   ...state.stepOne.values,
   ...state.stepTwo.values,
   ...state.stepThree.values,
-  advantages: state.stepTwo.values.advantages.map(adv => adv.value)
+  advantages: state.stepTwo.values.advantages?.map(adv => adv.value)
 })
