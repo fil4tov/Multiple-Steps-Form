@@ -9,9 +9,9 @@ import {
   Input
 } from 'components/ui'
 import { useAppSelector, useFormStep, usePhoneMask } from 'utils/hooks'
-import { getCurrentStep, getMainPageState } from 'store/selectors'
 import { Tips, regex } from 'utils/consts'
 
+import { getCurrentStep, getMainPageState } from 'store/selectors'
 import { type MainPageValues } from './types'
 import { setIsDone, setValues } from './slice'
 

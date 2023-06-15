@@ -1,11 +1,12 @@
 import { type FC, useEffect, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import { StepOne, StepTwo, StepThree } from './FormSteps'
 import { SuccessTooltip, FailTooltip } from 'components/'
 import { Box, ProgressBar } from 'components/ui'
 import { useAppSelector, useFormSubmit } from 'utils/hooks'
+
 import { getFormState } from 'store/selectors'
-import { StepOne, StepTwo, StepThree } from './FormSteps'
 import styles from './FormPage.module.scss'
 
 export const FormPage: FC = () => {
@@ -28,7 +29,7 @@ export const FormPage: FC = () => {
       <ProgressBar totalSteps={formSteps.length} currentStep={currentStep}/>
 
       {formSteps.map((FormStep, i) => (
-        i + 1 === currentStep && <FormStep key={i} currentStep={i + 1}/>
+        i + 1 === currentStep && <FormStep key={i}/>
       ))}
 
       {isSuccess

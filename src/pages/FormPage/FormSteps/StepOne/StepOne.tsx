@@ -9,14 +9,14 @@ import {
 } from 'components/ui'
 import { useAppSelector, useFormStep } from 'utils/hooks'
 import { regex, sexOptions, Tips } from 'utils/consts'
-import { getStepOneState } from 'store/selectors'
 
-import { type FormStepProps } from '../types'
+import { getCurrentStep, getStepOneState } from 'store/selectors'
 import { type StepOneValues } from './types'
 import { setValues, setIsDone } from './slice'
 
-export const StepOne: FC<FormStepProps> = ({ currentStep }) => {
+export const StepOne: FC = () => {
   const { values, isDone } = useAppSelector(getStepOneState)
+  const currentStep = useAppSelector(getCurrentStep)
 
   const {
     form,

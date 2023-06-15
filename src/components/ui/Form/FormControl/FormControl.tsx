@@ -14,9 +14,7 @@ interface FormControlState {
 const FormControlContext = createContext<FormControlState>({ isRequired: false })
 
 export const FormControl: FC<FormControlProps> = ({ className, children, isRequired }) => {
-  const store = useMemo(() => {
-    return { isRequired }
-  }, [isRequired])
+  const store = useMemo(() => ({ isRequired }), [])
 
   return (
     <FormControlContext.Provider value={store}>

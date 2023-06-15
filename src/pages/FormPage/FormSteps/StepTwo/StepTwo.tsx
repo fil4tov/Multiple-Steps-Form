@@ -14,14 +14,14 @@ import {
 import { Delete, Plus } from 'components/ui/Icons'
 import { useAppSelector, useFormStep } from 'utils/hooks'
 import { checkOptions, Tips } from 'utils/consts'
-import { getStepTwoState } from 'store/selectors'
 
-import { type FormStepProps } from '../types'
+import { getCurrentStep, getStepTwoState } from 'store/selectors'
 import { type StepTwoValues } from './types'
 import { setIsDone, setValues } from './slice'
 
-export const StepTwo: FC<FormStepProps> = ({ currentStep }) => {
+export const StepTwo: FC = () => {
   const { values, isDone } = useAppSelector(getStepTwoState)
+  const currentStep = useAppSelector(getCurrentStep)
 
   const { form, previousStep, nextStep } = useFormStep<StepTwoValues>({
     values,
@@ -55,8 +55,8 @@ export const StepTwo: FC<FormStepProps> = ({ currentStep }) => {
       <FormControl isRequired>
         <FormLabel text="Advantages"/>
 
-        {fields.map((item, index, arr) => (
-          <Fragment key={index}>
+        {fields.map(({ id }, index, arr) => (
+          <Fragment key={id}>
             <Box direction="row">
               <Input
                 {...register(`advantages.${index}.value`, {

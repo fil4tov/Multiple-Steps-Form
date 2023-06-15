@@ -11,15 +11,15 @@ import {
 } from 'components/ui'
 import { useAppSelector, useFormStep } from 'utils/hooks'
 import { Tips } from 'utils/consts'
-import { getFormLoading, getStepThreeState } from 'store/selectors'
 
+import { getCurrentStep, getFormLoading, getStepThreeState } from 'store/selectors'
 import { type StepThreeValues } from './types'
-import { type FormStepProps } from '../types'
 import { setIsDone, setValues } from './slice'
 
-export const StepThree: FC<FormStepProps> = ({ currentStep }) => {
+export const StepThree: FC = () => {
   const { values, isDone } = useAppSelector(getStepThreeState)
   const isLoading = useAppSelector(getFormLoading)
+  const currentStep = useAppSelector(getCurrentStep)
 
   const { form, previousStep, submitForm } = useFormStep<StepThreeValues>({
     values,

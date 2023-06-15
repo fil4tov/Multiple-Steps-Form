@@ -7,7 +7,7 @@ import { getAllValues } from 'store/selectors'
 import { sendForm, setCurrentStep } from 'pages/FormPage/slice'
 import { useAppDispatch, useAppSelector } from 'utils/hooks/'
 
-interface UseSaveStepProps<T extends FieldValues> {
+interface UseFormStepProps<T extends FieldValues> {
   values: DeepPartial<T>
   setValues: ActionCreatorWithPayload<T>
   setIsDone: ActionCreatorWithPayload<boolean>
@@ -16,7 +16,7 @@ interface UseSaveStepProps<T extends FieldValues> {
 }
 
 export const useFormStep = <T extends FieldValues> (
-  { setValues, setIsDone, currentStep, values, mode }: UseSaveStepProps<T>
+  { setValues, setIsDone, currentStep, values, mode }: UseFormStepProps<T>
 ) => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
@@ -38,7 +38,7 @@ export const useFormStep = <T extends FieldValues> (
     if (currentStep === 0) {
       navigate('/create')
     }
-    saveData(data)
+    saveValues(data)
     dispatch(setCurrentStep(currentStep + 1))
   }
 
@@ -46,7 +46,7 @@ export const useFormStep = <T extends FieldValues> (
     if (currentStep === 1) {
       navigate('/')
     }
-    saveData(getValues())
+    saveValues(getValues())
     dispatch(setCurrentStep(currentStep - 1))
   }
 
@@ -57,7 +57,7 @@ export const useFormStep = <T extends FieldValues> (
     }))
   }
 
-  const saveData = (data: T) => {
+  const saveValues = (data: T) => {
     dispatch(setValues(data))
     dispatch(setIsDone(true))
   }
