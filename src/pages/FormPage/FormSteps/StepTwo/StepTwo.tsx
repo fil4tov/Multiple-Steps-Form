@@ -62,9 +62,9 @@ export const StepTwo: FC = () => {
                 id={`field-advantages-${index + 1}`}
               />
               <Button
+                onClick={removeInput(index)}
                 disabled={arr.length === 1}
                 variant="clear"
-                onClick={removeInput(index)}
                 id={`button-remove-${index + 1}`}
               >
                 <Delete/>
@@ -74,7 +74,12 @@ export const StepTwo: FC = () => {
           </Fragment>
         ))}
 
-        <Button variant="outlined" onClick={addInput} id='button-add'>
+        <Button
+          onClick={addInput}
+          variant="outlined"
+          id='button-add'
+          style={{ padding: 'var(--space-3)' }}
+        >
           <Plus/>
         </Button>
       </FormControl>

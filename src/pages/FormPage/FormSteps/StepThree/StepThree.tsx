@@ -47,7 +47,7 @@ export const StepThree: FC = () => {
           placeholder="Placeholder..."
           id='field-about'
         />
-        <Box>
+        <Box direction='row'>
           <FormError text={errors?.about?.message}/>
           <FormTip stick='right' tip={String(aboutValueLength)}/>
         </Box>
