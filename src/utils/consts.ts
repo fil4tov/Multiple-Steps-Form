@@ -13,9 +13,9 @@ export enum Sex {
 }
 
 enum Check {
-  'FIRST_OPTION' = '1',
-  'SECOND_OPTION' = '2',
-  'THIRD_OPTION' = '3',
+  'FIRST_OPTION' = 1,
+  'SECOND_OPTION' = 2,
+  'THIRD_OPTION' = 3,
 }
 
 export const userLinks = [

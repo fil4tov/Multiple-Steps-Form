@@ -4,7 +4,7 @@ import { type ActionCreatorWithPayload } from '@reduxjs/toolkit'
 import { type DeepPartial, type Mode, useForm } from 'react-hook-form'
 
 import { useAppDispatch, useAppSelector } from 'utils/hooks/'
-import { getAllValues } from 'store/selectors'
+import { getAllModifiedValues } from 'store/selectors'
 import { sendForm, setCurrentStep } from 'pages/FormPage/slice'
 import { type FormStepState, type FormStepValues } from 'pages/FormPage/FormSteps/types'
 
@@ -26,7 +26,7 @@ export const useFormStep = <T extends FormStepValues>({
 ) => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
-  const allValues = useAppSelector(getAllValues)
+  const allValues = useAppSelector(getAllModifiedValues)
 
   const { getValues, trigger, ...rest } = useForm<T>({
     mode,
@@ -61,6 +61,7 @@ export const useFormStep = <T extends FormStepValues>({
   }
 
   const submitForm = (data: T) => {
+    console.log(allValues)
     dispatch(sendForm({
       ...allValues,
       ...data
