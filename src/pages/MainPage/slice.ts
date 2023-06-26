@@ -1,12 +1,11 @@
 import { type MainPageState, type MainPageValues } from './types'
 import { createSlice } from '@reduxjs/toolkit'
 import { getFormReducers } from 'utils/helpers'
-import { USER } from 'utils/consts'
 
 const initialState: MainPageState = {
   values: {
-    phone: USER.phoneNumber,
-    email: USER.email
+    phone: '',
+    email: ''
   },
   isDone: false
 }

@@ -26,9 +26,7 @@ export const userLinks = [
 
 export const USER = {
   firstName: 'Данил',
-  lastName: 'Непомнящий',
-  phoneNumber: '+7 (916) 667-71-80',
-  email: 'idioma@mail.ru'
+  lastName: 'Филатов'
 }
 
 export const BASE_URL = 'https://api.sbercloud.ru'
